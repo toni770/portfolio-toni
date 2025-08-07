@@ -1,0 +1,8 @@
+const Config = {
+  url: {
+    github: "https://github.com/toni770",
+    linkedin: "https://www.linkedin.com/in/toni-martin-649251185/",
+    gmail: "mailto:tonimartin@gmail.com",
+  },
+};
+export default Config;
