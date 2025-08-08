@@ -12,7 +12,7 @@ const ServiceCard = ({
   description: string;
 }) => {
   return (
-    <div className="flex flex-col gap-2 bg-white/10 backdrop-blur-md rounded-xl p-6 h-[25em] justify-between">
+    <div className="flex flex-col gap-2 bg-white/30 backdrop-blur-md rounded-xl p-6 h-[25em] justify-between">
       {icon}
       <div>
         <h2 className="text-[2em] leading-7">{title}</h2>

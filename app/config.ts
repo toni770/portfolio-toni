@@ -4,5 +4,8 @@ const Config = {
     linkedin: "https://www.linkedin.com/in/toni-martin-649251185/",
     gmail: "mailto:tonimartin@gmail.com",
   },
+  config: {
+    showProjectFilter: true,
+  },
 };
 export default Config;

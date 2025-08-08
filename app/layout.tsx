@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { hostGrotesk } from "./fonts";
 import NavLinks from "./nav-links";
-import Footer from "./footer";
+import Footer from "./Footer";
 
 export const metadata: Metadata = {
   title: "Toni Martin",

@@ -6,11 +6,12 @@ import {
   UserIcon,
   ChatBubbleLeftIcon,
 } from "@heroicons/react/24/solid";
+import Button from "./Button";
 
 const ContactForm = () => {
   return (
-    <form className="flex flex-col gap-4 w-[80%]">
-      <div className="flex gap-2">
+    <form className="flex flex-col gap-7 md:gap-4 w-[80%]">
+      <div className="flex flex-col md:flex-row gap-7 md:gap-2">
         <Input
           className="flex-1"
           label="Nombre"
@@ -37,9 +38,7 @@ const ContactForm = () => {
         type="textArea"
         icon={<ChatBubbleLeftIcon className="w-5 h-5 text-darkGray" />}
       />
-      <button className="border border-white p-3 rounded-4xl bg-black w-[30%] text-center">
-        Enviar
-      </button>
+      <Button text="Enviar" className="w-[30%] p-3 px-30 border-white" />
     </form>
   );
 };
