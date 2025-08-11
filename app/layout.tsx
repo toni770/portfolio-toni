@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${hostGrotesk.className} antialiased flex flex-col min-h-screen`}
+        className={`${hostGrotesk.className} antialiased flex flex-col min-h-screen text-base`}
       >
         <NavLinks />
         <main className="flex-1">{children}</main>

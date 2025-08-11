@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { KeplerStd } from "./fonts";
 
 const Links = [
@@ -15,6 +15,9 @@ export default function NavLinks() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
   return (
     <nav className="fixed md:static w-full flex p-4 px-7 justify-end md:justify-between items-center md:border-b border-darkGray text-darkGray h-16">
       {Links.map((link) => (
@@ -30,7 +33,7 @@ export default function NavLinks() {
         </Link>
       ))}
       <Bars2Icon
-        className="md:hidden w-10 h-10 text-white cursor-pointer"
+        className="md:hidden w-10 h-10 text-white cursor-pointer z-[2]"
         onClick={() => setIsOpen(true)}
       />
       {isOpen && (

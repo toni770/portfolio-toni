@@ -5,39 +5,40 @@ import { RectangleGroupIcon } from "@heroicons/react/24/solid";
 import { GlobeAltIcon } from "@heroicons/react/24/solid";
 import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
 
+const iconClasses = "w-14 h-14";
 const Services = [
   {
     title: "App",
     subtitle: "IOS/Android",
     description:
       "Desarrollo de una aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas",
-    icon: <RectangleGroupIcon className="w-15 h-15" />,
+    icon: <RectangleGroupIcon className={iconClasses} />,
   },
   {
     title: "Desarrollo",
     subtitle: "Web",
     description:
       "Desarrollo de una aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas",
-    icon: <GlobeAltIcon className="w-15 h-15" />,
+    icon: <GlobeAltIcon className={iconClasses} />,
   },
   {
     title: "Integraciones",
     subtitle: "a medida",
     description:
       "Desarrollo de una aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas",
-    icon: <PuzzlePieceIcon className="w-15 h-15" />,
+    icon: <PuzzlePieceIcon className={iconClasses} />,
   },
   {
     title: "Inteligencia",
     subtitle: "Artificial",
     description:
       "Desarrollo de una aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas",
-    icon: <UsersIcon className="w-15 h-15" />,
+    icon: <UsersIcon className={iconClasses} />,
   },
 ];
 const ServiceList = () => {
   return (
-    <div className="flex gap-5 justify-center items-center p-7 pb-20 text-black">
+    <div className="grid grid-cols-1 md:grid md:grid-cols-2 lg:grid-cols-4 gap-5 p-7 md:pb-20 text-black">
       {Services.map((service) => (
         <ServiceCard
           key={service.title}

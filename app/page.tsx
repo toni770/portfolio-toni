@@ -15,7 +15,10 @@ export default function Home() {
             height={100}
             priority
           />
-          <SocialNetworks className="pl-15 pt-10" />
+          <SocialNetworks
+            className="pl-15 pt-10 gap-15"
+            linkClassName="border-r-0"
+          />
         </div>
 
         <div className="w-[40%]">

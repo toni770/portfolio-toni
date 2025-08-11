@@ -6,17 +6,25 @@ const socialNetworks = [
   { name: "Linkedin", url: Config.url.linkedin },
   { name: "Gmail", url: Config.url.gmail },
 ];
-const SocialNetworks = ({ className }: { className?: string }) => {
+const SocialNetworks = ({
+  className,
+  linkClassName,
+}: {
+  className?: string;
+  linkClassName?: string;
+}) => {
   return (
     <div
-      className={`flex gap-15 text-md text-darkGray ${AuxMono.className} ${className}`}
+      className={`flex text-md text-darkGray ${AuxMono.className} ${className}`}
     >
-      {socialNetworks.map((socialNetwork) => (
+      {socialNetworks.map((socialNetwork, index) => (
         <a
           key={socialNetwork.name}
           href={socialNetwork.url}
           target="_blank"
-          className="cursor-pointer hover:underline"
+          className={`cursor-pointer hover:underline ${linkClassName} ${
+            index < socialNetworks.length - 1 ? "border-r" : ""
+          } md:border-r-0`}
         >
           {socialNetwork.name}
         </a>

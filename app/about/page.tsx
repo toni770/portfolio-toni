@@ -6,19 +6,18 @@ import ServiceList from "../components/ServiceList";
 
 const About = () => {
   return (
-    <div className="flex flex-col justify-between  w-full ">
-      <div className="flex flex-col justify-end items-center pt-7 flex-1 min-h-[calc(100vh-4rem)] px-7 py-7">
-        <div className="absolute top-0 mt-30 z-[-1] rounded-xl overflow-hidden">
+    <div className="flex flex-col justify-between w-full ">
+      <div className="flex flex-col justify-end items-center pt-7 flex-1 min-h-[calc(100vh)] md:min-h-[calc(100vh-4rem)] px-7 py-7">
+        <div className="absolute top-0 mt-20 md:mt-30 z-[-1] rounded-xl w-[70%] h-[60%] md:h-[70%]">
           <Image
             src="/foto.jpeg"
             alt="Toni"
-            width={350}
-            height={350}
+            fill
             priority
-            className="object-cover"
+            className="object-contain"
           />
         </div>
-        <h1 className="text-[2em] w-[40%] text-center mb-15">
+        <h1 className="text-4xl md:text-5xl w-[80%] md:w-[50%] text-center mb-10 md:mb-15">
           Im a creative
           <span className={`${KeplerStd.className}`}> freelance</span> helping
           startups with the design,
@@ -31,14 +30,20 @@ const About = () => {
       </div>
       <div className="flex flex-col items-center flex-1 min-h-[calc(100vh-3rem)]">
         <div className="border-y border-darkGray w-full">
-          <div className={`${KeplerStd.className} flex items-center gap-5`}>
+          <div
+            className={`${KeplerStd.className} flex overflow-hidden items-center gap-5`}
+          >
+            <ChartPieIcon className="w-15 h-15 " />
+            <h2 className="text-[6rem] whitespace-nowrap">
+              Soluciones personalizadas
+            </h2>
             <ChartPieIcon className="w-15 h-15" />
-            <h2 className="text-[4em]">Soluciones personalizadas</h2>
-            <ChartPieIcon className="w-15 h-15" />
-            <h2 className="text-[4em]">Soluciones personalizadas</h2>
+            <h2 className="text-[6rem] whitespace-nowrap">
+              Soluciones personalizadas
+            </h2>
           </div>
         </div>
-        <div className="flex-1 flex items-end bg-[url('/bgSphere.png')] bg-bottom bg-no-repeat bg-cover">
+        <div className="flex-1 flex items-end bg-[url('/bgCircle.png')] md:bg-[url('/bgSphere.png')] bg-contain bg-center md:bg-bottom bg-no-repeat md:bg-cover">
           <ServiceList />
         </div>
       </div>
