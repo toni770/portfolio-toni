@@ -27,8 +27,8 @@ const ProjectDetail = ({
     </React.Fragment>
   ));
   return (
-    <div className=" text-black rounded-xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[50%] h-[95%] z-10 flex flex-col bg-white">
-      <div className="flex-1 relative bg-cover bg-center rounded-t-xl">
+    <div className=" text-black rounded-xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:w-[50%] w-[90%] h-[95%] z-10 flex flex-col bg-white">
+      <div className="relative  rounded-t-xl h-[20%] ">
         <Image
           src={project.image}
           alt={project.name}
@@ -36,16 +36,16 @@ const ProjectDetail = ({
           priority
           objectFit="cover"
         />
-        <div className="flex justify-end p-7 absolute top-0 right-0">
-          <XMarkIcon className="w-15 h-15" onClick={onClose} />
+        <div className="flex justify-end p-3 absolute top-0 right-0">
+          <XMarkIcon className="w-[3rem] h-[3rem]" onClick={onClose} />
         </div>
       </div>
-      <div className="flex flex-col justify-between flex-2 ">
+      <div className="flex flex-col justify-between h-[80%]">
         <div className="p-7 pt-2 border-b border-darkGray">
-          <div className="flex justify-between">
-            <h1 className="text-[4em]">{project.name}</h1>
+          <div className="flex flex-wrap flex-col md:flex-row justify-between">
+            <h1 className="text-7xl order-2 md:order-1 pb-2">{project.name}</h1>
             {project.link && (
-              <div className="flex gap-2 items-center">
+              <div className="flex gap-2 items-center py-2 order-1 md:order-2">
                 <LinkIcon className="w-5 h-5" />
                 <a href={project.link} className="underline">
                   {project.link}
@@ -55,8 +55,8 @@ const ProjectDetail = ({
           </div>
           <p>{project.description}</p>
         </div>
-        <div className="flex h-full ">
-          <div className="flex-1 border-r border-darkGray w-full p-10">
+        <div className="flex h-full flex-col md:flex-row ">
+          <div className="flex-1 md:border-r border-darkGray w-full pb-0 p-10">
             <p className="underline pb-5">Problema</p>
             <p>{project.problem}</p>
           </div>

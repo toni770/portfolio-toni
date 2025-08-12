@@ -31,7 +31,7 @@ const ProjectList = () => {
     <div className="pb-7">
       {Config.config.showProjectFilter && (
         <div
-          className={`flex gap-5 ${AuxMono.className} text-md text-darkGray justify-end p-7`}
+          className={`flex gap-5 ${AuxMono.className} text-base md:text-md text-darkGray justify-end p-7`}
         >
           {uniqueTags.map((tag) => (
             <p
@@ -50,7 +50,7 @@ const ProjectList = () => {
         {filteredProjects.map((project) => (
           <div
             key={project.name}
-            className={`relative bg-white rounded-xl w-[15%] h-full transition-all duration-300 ease-in-out hover:w-[30%] hover:scale-105 hover:shadow-lg hover:z-10`}
+            className={`relative bg-white rounded-xl w-[300px] h-full transition-all duration-300 ease-in-out hover:w-[30%] hover:scale-105 hover:shadow-lg hover:z-10`}
             onClick={() => setSelectedProject(project)}
           >
             <Image
@@ -66,7 +66,7 @@ const ProjectList = () => {
       </div>
       {selectedProject && (
         <div
-          className="fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)]  z-50"
+          className="fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-50"
           onClick={handleClose}
         >
           <ProjectDetail project={selectedProject} onClose={handleClose} />

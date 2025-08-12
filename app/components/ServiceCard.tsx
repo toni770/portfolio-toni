@@ -18,7 +18,7 @@ const ServiceCard = ({
         <h2 className="text-4xl leading-7">{title}</h2>
         <h3 className={`${KeplerStd.className} text-4xl pb-10 `}>{subtitle}</h3>
       </div>
-      <p className="text-xl">{description}</p>
+      <p className="text-md">{description}</p>
     </div>
   );
 };

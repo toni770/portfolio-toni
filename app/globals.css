@@ -27,7 +27,7 @@
   --text-4xl: clamp(2rem, 2vw, 2.25rem);
   --text-5xl: clamp(2.5rem, 2vw, 3rem);
   --text-6xl: 3.75rem;
-  --text-7xl: 4.5rem;
+  --text-7xl: clamp(4rem, 2vw, 4.5rem);
   --text-8xl: clamp(4rem, 10vw, 6rem);
   --text-9xl: clamp(6rem, 10vw, 8rem);
 }
