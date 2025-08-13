@@ -2,7 +2,7 @@ import SocialNetworks from "./components/SocialNetworks";
 
 export default function Footer() {
   return (
-    <div className="text-base w-full flex flex-col md:flex-row md:p-2 md:px-7 justify-between items-center border-t border-darkGray text-darkGray h-12">
+    <div className="text-base w-full flex flex-col md:flex-row md:px-7 justify-between items-center border-t border-darkGray text-darkGray h-[6rem] md:h-[3rem]">
       <div className="flex w-full md:hidden border-b">
         <p className="flex-1 text-center border-r py-3">{`© ${new Date().getFullYear()} Toni Martin`}</p>
         <p className="flex-1 text-center py-3 ">
@@ -19,7 +19,7 @@ export default function Footer() {
       <p className=" hidden md:block">{`© ${new Date().getFullYear()} Toni Martin`}</p>
       <SocialNetworks
         className="text-sm w-full md:w-auto md:gap-15"
-        linkClassName="border- py-3 w-full flex-1 text-center"
+        linkClassName="py-3 w-full flex-1 text-center"
       />
       <p className="hidden md:block">
         Diseño by{" "}

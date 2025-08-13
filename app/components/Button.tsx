@@ -1,7 +1,17 @@
-const Button = ({ text, className }: { text: string; className?: string }) => {
+const Button = ({
+  text,
+  className,
+  onClick,
+}: {
+  text: string;
+  className?: string;
+  onClick?: () => void;
+}) => {
   return (
     <div
-      className={`border border-black p-2 px-15 rounded-4xl flex items-center justify-center ${className}`}
+      onClick={onClick}
+      role="button"
+      className={`cursor-pointer border border-black p-2 px-15 rounded-4xl flex items-center justify-center ${className}`}
     >
       <p>{text}</p>
     </div>

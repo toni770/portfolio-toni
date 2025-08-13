@@ -21,7 +21,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="relative md:absolute md:bottom-0 md:right-0  md:w-[50%] lg:w-[35%] md:h-[80%] h-100 w-100 bg-image:url('/LogoArmadilloGlow.png')">
+        <div className="relative md:absolute md:bottom-0 md:right-0 z-[1]  md:w-[50%] lg:w-[35%] md:h-[80%] h-100 w-100 bg-image:url('/LogoArmadilloGlow.png')">
           <Image
             src="/LogoArmadilloGlow.png"
             alt="Armadillo logo"
@@ -39,9 +39,7 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <div className="flex-1">
-        <ProjectList />
-      </div>
+      <ProjectList />
     </>
   );
 }

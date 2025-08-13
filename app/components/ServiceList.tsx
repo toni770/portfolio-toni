@@ -1,9 +1,11 @@
-import { UsersIcon } from "@heroicons/react/16/solid";
 import React from "react";
 import ServiceCard from "./ServiceCard";
-import { RectangleGroupIcon } from "@heroicons/react/24/solid";
-import { GlobeAltIcon } from "@heroicons/react/24/solid";
-import { PuzzlePieceIcon } from "@heroicons/react/24/solid";
+import {
+  RectangleGroupIcon,
+  GlobeAltIcon,
+  PuzzlePieceIcon,
+  Cog6ToothIcon,
+} from "@heroicons/react/24/solid";
 
 const iconClasses = "w-14 h-14";
 const Services = [
@@ -33,7 +35,7 @@ const Services = [
     subtitle: "Artificial",
     description:
       "Desarrollo de una aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas",
-    icon: <UsersIcon className={iconClasses} />,
+    icon: <Cog6ToothIcon className={iconClasses} />,
   },
 ];
 const ServiceList = () => {

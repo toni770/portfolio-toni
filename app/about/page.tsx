@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { KeplerStd } from "../fonts";
-import { ArrowDownIcon, ChartPieIcon } from "@heroicons/react/24/solid";
+import { ArrowDownIcon } from "@heroicons/react/24/solid";
 import ServiceList from "../components/ServiceList";
 import AboutInfiniteText from "../components/AboutInfiniteText";
 
@@ -29,9 +29,9 @@ const About = () => {
         <ArrowDownIcon className="w-9 h-9 mb-5" />
         <p>Que puedo hacer por ti?</p>
       </div>
-      <div className="flex flex-col items-center flex-1 min-h-[calc(100vh-3rem)]">
+      <div className="flex flex-col items-center flex-1 md:min-h-[calc(100vh-3rem)]  min-h-[calc(100vh-6rem)]">
         <AboutInfiniteText />
-        <div className="flex-1 flex items-end bg-[url('/bgCircle.png')] md:bg-[url('/bgSphere.png')] bg-contain bg-center md:bg-bottom bg-no-repeat md:bg-cover">
+        <div className="md:flex-1 flex items-end bg-[url('/bgCircle.png')] md:bg-[url('/bgSphere.png')] bg-contain bg-center md:bg-bottom bg-no-repeat md:bg-cover">
           <ServiceList />
         </div>
       </div>

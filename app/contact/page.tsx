@@ -1,13 +1,22 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import { KeplerStd } from "../fonts";
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/solid";
 import ContactForm from "../components/ContactForm";
 import Button from "../components/Button";
 
 const Contact = () => {
+  const formRef = useRef<HTMLDivElement>(null);
+  const handleScroll = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="flex flex-col md:flex-row w-full min-h-[calc(100vh-7rem)]">
-      <div className=" md:flex-1 min-h-[calc(100vh-4rem)] md:h-auto pt-15 md:pb-10 md:pl-7 flex flex-col gap-2 justify-center items-center md:items-start  order-2 md:order-1">
+    <div className="flex flex-col md:flex-row w-full ">
+      <div
+        ref={formRef}
+        className=" md:flex-1 min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-7rem)] md:h-auto pt-15 md:pt-0 md:pb-10 md:pl-7 flex flex-col gap-2 justify-center items-center md:items-start order-2 md:order-1"
+      >
         <h1 className="hidden md:block text-8xl w-1/2 leading-[0.7em] pb-10">
           Contacta <span className={`${KeplerStd.className}`}>conmigo</span>
         </h1>
@@ -25,6 +34,7 @@ const Contact = () => {
           <Button
             text="Escríbeme"
             className="w-[50%] border-black mt-7 md:hidden"
+            onClick={handleScroll}
           />
         </div>
 

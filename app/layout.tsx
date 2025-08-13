@@ -19,8 +19,8 @@ export default function RootLayout({
       <body
         className={`${hostGrotesk.className} antialiased flex flex-col min-h-screen text-base`}
       >
-        <NavLinks />
-        <main className="flex-1">{children}</main>
+        <NavLinks className="z-[2]" />
+        <main className="flex-1 z-[1]">{children}</main>
         <Footer />
       </body>
     </html>
