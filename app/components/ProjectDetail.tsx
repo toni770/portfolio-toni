@@ -35,9 +35,13 @@ const ProjectDetail = ({
           fill
           priority
           objectFit="cover"
+          className="rounded-t-xl"
         />
         <div className="flex justify-end p-3 absolute top-0 right-0">
-          <XMarkIcon className="w-[3rem] h-[3rem]" onClick={onClose} />
+          <XMarkIcon
+            className="w-[3rem] h-[3rem] cursor-pointer"
+            onClick={onClose}
+          />
         </div>
       </div>
       <div className="flex flex-col justify-between h-[80%]">

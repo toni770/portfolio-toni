@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import Config from "../config";
 import { AuxMono } from "../fonts";
 
@@ -6,15 +7,16 @@ const socialNetworks = [
   { name: "Linkedin", url: Config.url.linkedin },
   { name: "Gmail", url: Config.url.gmail },
 ];
-const SocialNetworks = ({
-  className,
-  linkClassName,
-}: {
-  className?: string;
-  linkClassName?: string;
-}) => {
+const SocialNetworks = forwardRef<
+  HTMLDivElement,
+  {
+    className?: string;
+    linkClassName?: string;
+  }
+>(({ className, linkClassName }, ref) => {
   return (
     <div
+      ref={ref}
       className={`flex text-md text-darkGray ${AuxMono.className} ${className}`}
     >
       {socialNetworks.map((socialNetwork, index) => (
@@ -31,6 +33,7 @@ const SocialNetworks = ({
       ))}
     </div>
   );
-};
+});
+SocialNetworks.displayName = "SocialNetworks";
 
 export default SocialNetworks;

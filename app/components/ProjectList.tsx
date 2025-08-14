@@ -1,17 +1,19 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, forwardRef } from "react";
 import { AuxMono } from "../fonts";
 import projectData, { project } from "../projectData";
-import ProjectDetail from "./ProjectDetail";
 import Image from "next/image";
 import Config from "../config";
 import gsap from "gsap";
 
 const allTags = projectData.flatMap((project) => project.tags);
 const uniqueTags = ["Todos", ...new Set(allTags)];
-const ProjectList = () => {
-  const [selectedProject, setSelectedProject] = useState<project | null>(null);
+
+const ProjectList = forwardRef<
+  HTMLDivElement,
+  { className?: string; onClick: (project: project) => void }
+>(({ className, onClick }, ref) => {
   const [currentFilter, setCurrentFilter] = useState<string>("Todos");
   const [filteredProjects, setFilteredProjects] =
     useState<project[]>(projectData);
@@ -71,14 +73,11 @@ const ProjectList = () => {
     setFilteredProjects(filtered);
   }, [currentFilter]);
 
-  function handleClose() {
-    setSelectedProject(null);
-  }
   return (
-    <div className="pb-7">
+    <div className={`pb-7 ${className}`} ref={ref}>
       {Config.config.showProjectFilter && (
         <div
-          className={`flex gap-5 ${AuxMono.className} text-base md:text-md text-darkGray justify-end p-7`}
+          className={`flex gap-5 ${AuxMono.className} text-base md:text-md text-darkGray justify-center md:justify-end p-7 pt-0 flex-wrap`}
         >
           {uniqueTags.map((tag) => (
             <p
@@ -95,38 +94,30 @@ const ProjectList = () => {
       )}
       <div
         ref={containerRef}
-        className="scrollBehavior-auto h-80 overflow-x-hidden overflow-y-hidden whitespace-nowrap py-4 px-7 -mx-7 scrollbar-hide w-full"
+        className="scrollBehavior-auto h-80 overflow-x-hidden overflow-y-hidden whitespace-nowrap py-4  scrollbar-hide w-full"
       >
         <div className="inline-flex gap-5 h-full">
           {filteredProjects.map((project) => (
             <ProjectCard
               key={project.name}
               project={project}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => onClick(project)}
             />
           ))}
           {filteredProjects.map((project) => (
             <ProjectCard
               key={project.name}
               project={project}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => onClick(project)}
               className="bg-black"
             />
           ))}
         </div>
       </div>
-
-      {selectedProject && (
-        <div
-          className="fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-50"
-          onClick={handleClose}
-        >
-          <ProjectDetail project={selectedProject} onClose={handleClose} />
-        </div>
-      )}
     </div>
   );
-};
+});
+ProjectList.displayName = "ProjectList";
 
 const ProjectCard = ({
   project,

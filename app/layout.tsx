@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { hostGrotesk } from "./fonts";
-import NavLinks from "./nav-links";
-import Footer from "./Footer";
+import Body from "./components/Body";
 
 export const metadata: Metadata = {
   title: "Toni Martin",
@@ -16,13 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${hostGrotesk.className} antialiased flex flex-col min-h-screen text-base`}
-      >
-        <NavLinks className="z-[2]" />
-        <main className="flex-1 z-[1]">{children}</main>
-        <Footer />
-      </body>
+      <Body>{children}</Body>
     </html>
   );
 }
