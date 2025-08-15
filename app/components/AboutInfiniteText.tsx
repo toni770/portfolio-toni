@@ -46,7 +46,7 @@ const AboutInfiniteText = () => {
     }
   };
   return (
-    <div className="border-y border-darkGray w-full overflow-hidden h-[9rem] ">
+    <div className="border-y border-darkGray w-full overflow-hidden h-[9rem] sticky top-0 bg-black z-[10]">
       <div
         ref={slider}
         className={`${KeplerStd.className} flex items-center gap-5 whitespace-nowrap relative `}

@@ -1,12 +1,32 @@
-import React from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { KeplerStd } from "../fonts";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 import ServiceList from "../components/ServiceList";
 import AboutInfiniteText from "../components/AboutInfiniteText";
 import AnimatedBackground from "../components/AnimatedBackground";
-
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 const About = () => {
+  const imageBgRef = useRef<HTMLImageElement>(null);
+  const secondPartRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.from(imageBgRef.current, {
+      opacity: 0,
+      scale: 0.5,
+      ease: "power2.inOut",
+      duration: 1,
+      scrollTrigger: {
+        trigger: secondPartRef.current,
+        start: "top 70%",
+        end: "top 20%",
+        scrub: 1,
+      },
+    });
+  }, []);
+
   return (
     <div className="flex flex-col justify-between w-full ">
       <div className="flex flex-col justify-end items-center pt-7 flex-1 min-h-[calc(100vh)] md:min-h-[calc(100vh-4rem)] px-7 py-7">
@@ -33,7 +53,18 @@ const About = () => {
       </div>
       <div className="flex flex-col items-center flex-1 md:min-h-[calc(100vh-3rem)]  min-h-[calc(100vh-6rem)]">
         <AboutInfiniteText />
-        <div className="md:flex-1 flex items-end bg-[url('/bgCircle.png')] md:bg-[url('/bgSphere.png')] bg-contain bg-center md:bg-bottom bg-no-repeat md:bg-cover">
+        <div
+          ref={secondPartRef}
+          className="relative md:flex-1 flex items-end  md:bg-[url('/bgSphere.png')] bg-contain bg-center md:bg-bottom bg-no-repeat md:bg-cover"
+        >
+          <Image
+            ref={imageBgRef}
+            src="/bgCircle.png"
+            alt="bgCircle"
+            width={500}
+            height={500}
+            className={`md:hidden object-cover rounded-xl fixed top-[30%] z-[-10] left-1/2 -translate-x-1/2`}
+          />
           <ServiceList />
         </div>
       </div>
