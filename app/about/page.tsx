@@ -11,7 +11,7 @@ const About = () => {
     <div className="flex flex-col justify-between w-full ">
       <div className="flex flex-col justify-end items-center pt-7 flex-1 min-h-[calc(100vh)] md:min-h-[calc(100vh-4rem)] px-7 py-7">
         <AnimatedBackground />
-        <div className="absolute top-0 mt-20 md:mt-30 z-[-1] rounded-xl w-[20%] h-[60%] md:h-[70%] ">
+        <div className="absolute top-0 mt-20 md:mt-30 z-[-1] rounded-xl w-100 h-[60%] md:h-[70%] ">
           <Image
             src="/foto.jpeg"
             alt="Toni"
