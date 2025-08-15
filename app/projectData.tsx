@@ -23,7 +23,7 @@ const projectData: project[] = [
       "Express.js",
       "Integración con pasarela de pago",
     ],
-    image: "/Mockup.jpg",
+    image: "/MockUpNoFlights.png",
     tags: ["App"],
   },
   {
@@ -34,7 +34,7 @@ const projectData: project[] = [
     solution:
       "Desarrollo de una aplicación móvil que permite localizar mezquitas en España mediante geolocalización y recibir notificaciones con las últimas novedades.",
     technologies: ["React Native", "Push Notifications", "Backoffice"],
-    image: "/Mockup.jpg",
+    image: "/MockUpKheirApp.png",
     link: "https://kheirapp.com",
     tags: ["App"],
   },
@@ -47,7 +47,7 @@ const projectData: project[] = [
     solution:
       "App que recopila y analiza datos en tiempo real, ofreciendo recomendaciones personalizadas mediante inteligencia artificial para mejorar el control de la enfermedad.",
     technologies: ["React Native", "API Integrations", "Chat", "AI"],
-    image: "/Mockup.jpg",
+    image: "/MockUpDaia.png",
     link: "https://daia.pro/",
     tags: ["App", "AI"],
   },
@@ -59,7 +59,7 @@ const projectData: project[] = [
     solution:
       "Desarrollo de una tienda online de electrodomésticos totalmente integrada con el ERP de la empresa, sincronizando pedidos, usuarios y productos.",
     technologies: ["Web", "WordPress", "API Integration", "E-commerce"],
-    image: "/Mockup.jpg",
+    image: "/MockUpMegafactory.png",
     link: "https://megafactory.es",
     tags: ["Web", "Integraciones"],
   },
@@ -71,7 +71,7 @@ const projectData: project[] = [
     solution:
       "Rediseño y mejora del sistema de gestión, adaptándolo a los requisitos concretos del cliente para ofrecer una solución más completa, flexible y eficiente.",
     technologies: ["React"],
-    image: "/Mockup.jpg",
+    image: "/MockUpVoleiJam.png",
     link: "https://voleijam.cat",
     tags: ["Web"],
   },
@@ -83,7 +83,7 @@ const projectData: project[] = [
     solution:
       "Plataforma digital que conecta a propietarios de embarcaciones con proveedores especializados, permitiendo solicitar, gestionar y seguir servicios de mantenimiento y reparación desde web o móvil.",
     technologies: ["WordPress", "Web", "React Native"],
-    image: "/Mockup.jpg",
+    image: "/MockUpBoatCare.png",
     tags: ["App"],
   },
   {
@@ -94,7 +94,7 @@ const projectData: project[] = [
     solution:
       "Desarrollo de un juego para móviles y tablets con una estética alegre, colorida y adaptada al gusto infantil, cumpliendo con las especificaciones del cliente.",
     technologies: ["Unity"],
-    image: "/Mockup.jpg",
+    image: "/MockUpMagical.png",
     tags: ["App"],
   },
 ];

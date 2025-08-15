@@ -109,7 +109,6 @@ const ProjectList = forwardRef<
               key={project.name}
               project={project}
               onClick={() => onClick(project)}
-              className="bg-black"
             />
           ))}
         </div>
@@ -131,7 +130,7 @@ const ProjectCard = ({
   return (
     <div
       key={project.name}
-      className={`relative rounded-xl w-[400px] h-full transition-all duration-300 ease-in-out hover:w-[350px] hover:shadow-lg hover:z-10 inline-block align-top`}
+      className={`relative rounded-xl w-[20rem] h-full transition-all duration-300 ease-in-out hover:w-[30rem] hover:shadow-lg hover:z-10 inline-block align-top`}
       onClick={onClick}
     >
       <Image
@@ -143,9 +142,9 @@ const ProjectCard = ({
         objectFit="cover"
       />
       <div className="absolute bottom-0 left-0 w-full h-full transition-all duration-300 ease-in-out">
-        <h2 className={`text-white text-center ${className}`}>
+        {/* <h2 className={`text-white text-center ${className}`}>
           {project.name}
-        </h2>
+        </h2> */}
       </div>
     </div>
   );
