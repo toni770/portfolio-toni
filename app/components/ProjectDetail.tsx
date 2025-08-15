@@ -51,7 +51,7 @@ const ProjectDetail = ({
             {project.link && (
               <div className="flex gap-2 items-center py-2 order-1 md:order-2">
                 <LinkIcon className="w-5 h-5" />
-                <a href={project.link} className="underline">
+                <a href={project.link} className="underline" target="_blank">
                   {project.link}
                 </a>
               </div>
