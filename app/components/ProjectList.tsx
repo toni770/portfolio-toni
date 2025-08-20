@@ -74,7 +74,7 @@ const ProjectList = forwardRef<
   }, [currentFilter]);
 
   return (
-    <div className={`pb-7 ${className}`} ref={ref}>
+    <div className={`md:pb-7 h-full flex flex-col  ${className}`} ref={ref}>
       {Config.config.showProjectFilter && (
         <div
           className={`flex gap-5 ${AuxMono.className} text-base md:text-md text-darkGray justify-center md:justify-end p-7 pt-0 flex-wrap`}
@@ -94,7 +94,7 @@ const ProjectList = forwardRef<
       )}
       <div
         ref={containerRef}
-        className="scrollBehavior-auto h-80 overflow-x-hidden overflow-y-hidden whitespace-nowrap py-4  scrollbar-hide w-full"
+        className="scrollBehavior-auto flex-1 overflow-x-hidden overflow-y-hidden whitespace-nowrap scrollbar-hide w-full"
       >
         <div className="inline-flex gap-5 h-full">
           {filteredProjects.map((project) => (

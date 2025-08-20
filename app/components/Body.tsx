@@ -12,7 +12,7 @@ const Body = ({ children }: { children: React.ReactNode }) => {
       className={`${
         hostGrotesk.className
       } antialiased flex flex-col min-h-screen text-base  ${
-        pathname === "/" ? "overflow-hidden" : ""
+        pathname === "/" ? "" : ""
       }`}
     >
       <NavLinks className="z-[2]" />
