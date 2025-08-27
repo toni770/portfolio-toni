@@ -5,11 +5,13 @@ import { AuxMono } from "../fonts";
 import projectData, { project } from "../projectData";
 import Image from "next/image";
 import Config from "../config";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import gsap from "gsap";
 
 const allTags = projectData.flatMap((project) => project.tags);
 const uniqueTags = ["Todos", ...new Set(allTags)];
 
+const GAP = 20;
 const ProjectList = forwardRef<
   HTMLDivElement,
   { className?: string; onClick: (project: project) => void }
@@ -19,50 +21,41 @@ const ProjectList = forwardRef<
     useState<project[]>(projectData);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollPos = useRef(0);
+  const cardRef = useRef<HTMLDivElement>(null); // reference for measuring card width
+  const isAnimating = useRef(false);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  function handleScroll(left: boolean) {
+    console.log("Before: " + scrollPos.current);
+    if (isAnimating.current || !containerRef.current || !cardRef.current)
+      return;
+    isAnimating.current = true;
+    const cardWidth = cardRef.current.offsetWidth; // get real width in px
+    const step = cardWidth + GAP;
 
-    const contentWidth = container.scrollWidth / 2;
+    scrollPos.current = left
+      ? scrollPos.current - step
+      : scrollPos.current + step;
 
-    const handleWheel = (e: WheelEvent) => {
-      if (e.deltaY === 0 && e.deltaX === 0) return;
-      e.preventDefault();
+    const totalWidth = (containerRef.current.scrollWidth + GAP) / 2;
 
-      scrollPos.current += e.deltaY * 2;
+    if (scrollPos.current < 0) {
+      scrollPos.current = totalWidth - step; // saltamos al "mismo card" en la segunda copia
+      containerRef.current.scrollLeft = totalWidth; // salto instantáneo sin animación
+    } else if (scrollPos.current > totalWidth) {
+      scrollPos.current = 0 + step;
+      containerRef.current.scrollLeft = 0; // salto instantáneo
+    }
+    console.log("After: " + scrollPos.current);
 
-      // Salto al principio
-      if (scrollPos.current >= contentWidth) {
-        scrollPos.current -= e.deltaY * 2;
-
-        gsap.killTweensOf(container); // ❗ mata la animación en curso
-        scrollPos.current -= contentWidth;
-        container.scrollLeft = scrollPos.current;
-      }
-      // Salto al final
-      else if (scrollPos.current < 0) {
-        scrollPos.current -= e.deltaY * 2;
-
-        gsap.killTweensOf(container); // ❗ mata la animación en curso
-        scrollPos.current += contentWidth;
-        container.scrollLeft = scrollPos.current;
-      }
-
-      // Ahora sí, animación suave para el desplazamiento normal
-      gsap.to(container, {
-        scrollLeft: scrollPos.current,
-        duration: 1,
-        ease: "power3.out",
-      });
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
-  }, []);
+    gsap.to(containerRef.current, {
+      scrollLeft: scrollPos.current,
+      duration: 0.7,
+      ease: "power3.out",
+      onComplete: () => {
+        isAnimating.current = false;
+      },
+    });
+  }
 
   useEffect(() => {
     const filtered = projectData.filter((project) => {
@@ -92,25 +85,44 @@ const ProjectList = forwardRef<
           ))}
         </div>
       )}
-      <div
-        ref={containerRef}
-        className="scrollBehavior-auto flex-1 overflow-x-hidden overflow-y-hidden whitespace-nowrap scrollbar-hide w-full"
-      >
-        <div className="inline-flex gap-5 h-full">
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.name}
-              project={project}
-              onClick={() => onClick(project)}
-            />
-          ))}
-          {filteredProjects.map((project) => (
-            <ProjectCard
-              key={project.name}
-              project={project}
-              onClick={() => onClick(project)}
-            />
-          ))}
+
+      <div className="relative w-full flex-1 flex relative">
+        <div
+          className=" cursor-pointer z-15 absolute left-0 hover:bg-black/50 bg-black/25 w-15 h-full flex items-center justify-center"
+          onClick={() => handleScroll(true)}
+        >
+          <ChevronLeftIcon className="w-10 h-10 " />
+        </div>
+        <div
+          className=" cursor-pointer z-15 absolute right-0 hover:bg-black/50 bg-black/25 w-15 h-full flex items-center justify-center"
+          onClick={() => handleScroll(false)}
+        >
+          <ChevronRightIcon className="w-10 h-10" />
+        </div>
+        <div
+          ref={containerRef}
+          className="scrollBehavior-auto flex-1 overflow-x-hidden overflow-y-hidden whitespace-nowrap scrollbar-hide w-full"
+        >
+          <div className="inline-flex gap-5 h-full">
+            {filteredProjects.map((project) => (
+              <ProjectCard
+                key={project.name}
+                project={project}
+                onClick={() => onClick(project)}
+                cardRef={cardRef}
+              />
+            ))}
+
+            {currentFilter === "Todos" &&
+              filteredProjects.map((project) => (
+                <ProjectCard
+                  key={project.name}
+                  project={project}
+                  onClick={() => onClick(project)}
+                  cardRef={cardRef}
+                />
+              ))}
+          </div>
         </div>
       </div>
     </div>
@@ -121,15 +133,16 @@ ProjectList.displayName = "ProjectList";
 const ProjectCard = ({
   project,
   onClick,
-  className,
+  cardRef,
 }: {
   project: project;
   onClick: () => void;
-  className?: string;
+  cardRef?: React.RefObject<HTMLDivElement | null>;
 }) => {
   return (
     <div
       key={project.name}
+      ref={cardRef}
       className={`relative rounded-xl w-[20rem] h-full transition-all duration-300 ease-in-out hover:w-[30rem] hover:shadow-lg hover:z-10 inline-block align-top`}
       onClick={onClick}
     >

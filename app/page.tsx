@@ -133,7 +133,7 @@ export default function Home() {
     <div ref={root}>
       <div
         ref={firstPageRoot}
-        className="flex flex-col justify-between items-center md:items-start md:h-[calc(100vh-4rem)] md:min-h-[calc(100vh-7rem)] min-h-[calc(100vh-6rem)] h-[calc(100vh)] w-full py-7 pt-20 md:pt-0"
+        className="flex flex-col justify-between items-center md:items-start transition-all duration-1000 ease-in-out md:h-[calc(100vh-4rem)] md:min-h-[calc(100vh-7rem)] min-h-[calc(100vh-6rem)] h-[calc(100vh)] w-full py-7 pt-20 md:pt-0"
       >
         <div className="w-full px-7">
           <div className="relative md:w-[70%] h-30 md:h-50 md:h-50 lg:h-70 ">
