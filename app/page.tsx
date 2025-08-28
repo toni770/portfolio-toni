@@ -9,6 +9,8 @@ import Flip from "gsap/Flip";
 import { project } from "./projectData";
 import ProjectDetail from "./components/ProjectDetail";
 
+const PROJECTS_MOBILE_MARGIN = 312;
+
 export default function Home() {
   const [isProjects, setIsProjects] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -20,6 +22,8 @@ export default function Home() {
   const tl = useRef<gsap.core.Timeline>(null);
   const root = useRef<HTMLDivElement>(null);
   const [selectedProject, setSelectedProject] = useState<project | null>(null);
+  const scrollPos = useRef(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   function handleClose() {
     setSelectedProject(null);
@@ -65,6 +69,11 @@ export default function Home() {
       firstPageRoot.current?.classList.remove("justify-between");
       firstPageRoot.current?.classList.add("justify-start");
       firstPageRoot.current?.appendChild(projectsRef.current!);
+      if (containerRef.current) {
+        scrollPos.current = PROJECTS_MOBILE_MARGIN;
+        containerRef.current.scrollLeft = scrollPos.current;
+      }
+
       firstPageRoot.current?.classList.remove("md:h-[calc(100vh-4rem)]");
       firstPageRoot.current?.classList.add("md:h-[calc(100vh-7rem)]");
       firstPageRoot.current?.classList.remove("h-[calc(100vh)]");
@@ -195,6 +204,9 @@ export default function Home() {
         ref={projectsRef}
         className="w-full"
         onClick={setSelectedProject}
+        scrollPos={scrollPos}
+        containerRef={containerRef}
+        mobileMargin={PROJECTS_MOBILE_MARGIN}
       />
     </div>
   );

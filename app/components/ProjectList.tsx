@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useRef, forwardRef } from "react";
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  forwardRef,
+  RefObject,
+} from "react";
 import { AuxMono } from "../fonts";
 import projectData, { project } from "../projectData";
 import Image from "next/image";
@@ -14,42 +20,67 @@ const uniqueTags = ["Todos", ...new Set(allTags)];
 const GAP = 20;
 const ProjectList = forwardRef<
   HTMLDivElement,
-  { className?: string; onClick: (project: project) => void }
->(({ className, onClick }, ref) => {
+  {
+    className?: string;
+    onClick: (project: project) => void;
+    scrollPos: RefObject<number>;
+    containerRef: RefObject<HTMLDivElement | null>;
+    mobileMargin: number;
+  }
+>(({ className, onClick, scrollPos, containerRef, mobileMargin }, ref) => {
   const [currentFilter, setCurrentFilter] = useState<string>("Todos");
   const [filteredProjects, setFilteredProjects] =
     useState<project[]>(projectData);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollPos = useRef(0);
   const cardRef = useRef<HTMLDivElement>(null); // reference for measuring card width
   const isAnimating = useRef(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    console.log(container.scrollLeft);
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY === 0 && e.deltaX === 0) return;
+      e.preventDefault();
+
+      handleScroll(e.deltaY > 0);
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
 
   function handleScroll(left: boolean) {
     console.log("Before: " + scrollPos.current);
     if (isAnimating.current || !containerRef.current || !cardRef.current)
       return;
     isAnimating.current = true;
-    const cardWidth = cardRef.current.offsetWidth; // get real width in px
+    const cardWidth = cardRef.current.offsetWidth;
     const step = cardWidth + GAP;
 
     scrollPos.current = left
       ? scrollPos.current - step
       : scrollPos.current + step;
 
-    const totalWidth = (containerRef.current.scrollWidth + GAP) / 2;
+    const totalWidth =
+      (containerRef.current.scrollWidth + GAP) / 2 + mobileMargin;
 
     if (scrollPos.current < 0) {
       scrollPos.current = totalWidth - step; // saltamos al "mismo card" en la segunda copia
       containerRef.current.scrollLeft = totalWidth; // salto instantáneo sin animación
     } else if (scrollPos.current > totalWidth) {
-      scrollPos.current = 0 + step;
-      containerRef.current.scrollLeft = 0; // salto instantáneo
+      const firstPos = 0 + mobileMargin;
+      scrollPos.current = firstPos + step;
+      containerRef.current.scrollLeft = firstPos; // salto instantáneo
     }
     console.log("After: " + scrollPos.current);
 
     gsap.to(containerRef.current, {
       scrollLeft: scrollPos.current,
-      duration: 0.7,
+      duration: 0.5,
       ease: "power3.out",
       onComplete: () => {
         isAnimating.current = false;
@@ -143,7 +174,7 @@ const ProjectCard = ({
     <div
       key={project.name}
       ref={cardRef}
-      className={`relative rounded-xl w-[20rem] h-full transition-all duration-300 ease-in-out hover:w-[30rem] hover:shadow-lg hover:z-10 inline-block align-top`}
+      className={`relative rounded-xl w-[20rem] h-full transition-all duration-300 ease-in-out md:hover:w-[30rem] hover:shadow-lg hover:z-10 inline-block align-top`}
       onClick={onClick}
     >
       <Image
@@ -154,11 +185,7 @@ const ProjectCard = ({
         priority
         objectFit="cover"
       />
-      <div className="absolute bottom-0 left-0 w-full h-full transition-all duration-300 ease-in-out">
-        {/* <h2 className={`text-white text-center ${className}`}>
-          {project.name}
-        </h2> */}
-      </div>
+      <div className="absolute bottom-0 left-0 w-full h-full transition-all duration-300 ease-in-out"></div>
     </div>
   );
 };

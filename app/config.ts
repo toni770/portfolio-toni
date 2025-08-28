@@ -5,7 +5,7 @@ const Config = {
     gmail: "mailto:tonimartin@gmail.com",
   },
   config: {
-    showProjectFilter: true,
+    showProjectFilter: false,
   },
 };
 export default Config;

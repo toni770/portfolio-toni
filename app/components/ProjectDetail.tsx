@@ -37,10 +37,10 @@ const ProjectDetail = ({
           objectFit="cover"
           className="rounded-t-xl"
         />
-        <div className="flex justify-end p-3 absolute top-0 right-0">
+        <div className="flex cursor-pointer justify-end p-3 absolute top-0 left-0">
           <XMarkIcon
-            className="w-[3rem] h-[3rem] cursor-pointer"
             onClick={onClose}
+            className=" cursor-pointer w-[3rem] h-[3rem]"
           />
         </div>
       </div>
