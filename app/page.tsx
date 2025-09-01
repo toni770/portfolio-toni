@@ -9,7 +9,7 @@ import Flip from "gsap/Flip";
 import { project } from "./projectData";
 import ProjectDetail from "./components/ProjectDetail";
 
-const PROJECTS_MOBILE_MARGIN = 312;
+const PROJECTS_MOBILE_MARGIN = 0;
 
 export default function Home() {
   const [isProjects, setIsProjects] = useState(false);
@@ -69,10 +69,10 @@ export default function Home() {
       firstPageRoot.current?.classList.remove("justify-between");
       firstPageRoot.current?.classList.add("justify-start");
       firstPageRoot.current?.appendChild(projectsRef.current!);
-      if (containerRef.current) {
-        scrollPos.current = PROJECTS_MOBILE_MARGIN;
-        containerRef.current.scrollLeft = scrollPos.current;
-      }
+      // if (containerRef.current) {
+      //   scrollPos.current = PROJECTS_MOBILE_MARGIN;
+      //   containerRef.current.scrollLeft = scrollPos.current;
+      // }
 
       firstPageRoot.current?.classList.remove("md:h-[calc(100vh-4rem)]");
       firstPageRoot.current?.classList.add("md:h-[calc(100vh-7rem)]");
@@ -192,7 +192,7 @@ export default function Home() {
         </div>
         {selectedProject && (
           <div
-            className="fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-50"
+            className=" fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-[20]"
             onClick={handleClose}
           >
             <ProjectDetail project={selectedProject} onClose={handleClose} />

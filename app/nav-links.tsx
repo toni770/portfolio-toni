@@ -20,14 +20,14 @@ export default function NavLinks({ className }: { className?: string }) {
   }, [pathname]);
   return (
     <nav
-      className={`fixed md:static w-full flex px-7 justify-end md:justify-between items-center md:border-b border-darkGray text-darkGray h-[4rem] ${className}`}
+      className={`fixed md:static pointer-events-none w-full flex px-7 justify-end md:justify-between items-center md:border-b border-darkGray text-darkGray h-[4rem] ${className}`}
     >
       {Links.map((link) => (
         <Link
           key={link.name}
           href={link.href}
           className={
-            `hidden md:block  ` +
+            `pointer-events-auto hidden md:block  ` +
             (pathname === link.href ? "text-white underline" : "")
           }
         >
@@ -35,11 +35,11 @@ export default function NavLinks({ className }: { className?: string }) {
         </Link>
       ))}
       <Bars2Icon
-        className="md:hidden w-10 h-10 text-white cursor-pointer "
+        className="md:hidden w-10 h-10 text-white cursor-pointer pointer-events-auto"
         onClick={() => setIsOpen(true)}
       />
       {isOpen && (
-        <div className="flex flex-col md:hidden text-white text-6xl justify-center items-center w-screen h-screen fixed top-0 left-0 bg-black ">
+        <div className="flex pointer-events-auto flex-col md:hidden text-white text-6xl justify-center items-center w-screen h-screen fixed top-0 left-0 bg-black ">
           <XMarkIcon
             className="w-12 h-12 text-white cursor-pointer absolute top-10 right-10"
             onClick={() => setIsOpen(false)}
@@ -49,7 +49,7 @@ export default function NavLinks({ className }: { className?: string }) {
               key={link.name}
               href={link.href}
               className={
-                `py-5  ` +
+                `py-5 pointer-events-auto ` +
                 (pathname === link.href
                   ? `text-white underline ${KeplerStd.className}`
                   : "")

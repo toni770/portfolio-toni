@@ -34,24 +34,24 @@ const ProjectList = forwardRef<
   const cardRef = useRef<HTMLDivElement>(null); // reference for measuring card width
   const isAnimating = useRef(false);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+  // useEffect(() => {
+  //   const container = containerRef.current;
+  //   if (!container) return;
 
-    console.log(container.scrollLeft);
-    const handleWheel = (e: WheelEvent) => {
-      if (e.deltaY === 0 && e.deltaX === 0) return;
-      e.preventDefault();
+  //   console.log(container.scrollLeft);
+  //   const handleWheel = (e: WheelEvent) => {
+  //     if (e.deltaY === 0 && e.deltaX === 0) return;
+  //     e.preventDefault();
 
-      handleScroll(e.deltaY > 0);
-    };
+  //     handleScroll(e.deltaY > 0);
+  //   };
 
-    window.addEventListener("wheel", handleWheel, { passive: false });
+  //   window.addEventListener("wheel", handleWheel, { passive: false });
 
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("wheel", handleWheel);
+  //   };
+  // }, []);
 
   function handleScroll(left: boolean) {
     console.log("Before: " + scrollPos.current);
