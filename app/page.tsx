@@ -9,8 +9,6 @@ import Flip from "gsap/Flip";
 import { project } from "./projectData";
 import ProjectDetail from "./components/ProjectDetail";
 
-const PROJECTS_MOBILE_MARGIN = 0;
-
 export default function Home() {
   const [isProjects, setIsProjects] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
@@ -24,6 +22,7 @@ export default function Home() {
   const [selectedProject, setSelectedProject] = useState<project | null>(null);
   const scrollPos = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [showProjects, setShowProjects] = useState(false);
 
   function handleClose() {
     setSelectedProject(null);
@@ -48,11 +47,13 @@ export default function Home() {
   }, []);
 
   function GoToProjects() {
+    setShowProjects(true);
     gsapFlipAnim(true);
     setIsProjects(true);
     tl.current?.play();
   }
   function GoBackHome() {
+    setShowProjects(false);
     gsapFlipAnim(false);
     setIsProjects(false);
     tl.current?.reverse();
@@ -69,10 +70,6 @@ export default function Home() {
       firstPageRoot.current?.classList.remove("justify-between");
       firstPageRoot.current?.classList.add("justify-start");
       firstPageRoot.current?.appendChild(projectsRef.current!);
-      // if (containerRef.current) {
-      //   scrollPos.current = PROJECTS_MOBILE_MARGIN;
-      //   containerRef.current.scrollLeft = scrollPos.current;
-      // }
 
       firstPageRoot.current?.classList.remove("md:h-[calc(100vh-4rem)]");
       firstPageRoot.current?.classList.add("md:h-[calc(100vh-7rem)]");
@@ -132,6 +129,7 @@ export default function Home() {
       socialNetworksRef.current?.classList.remove("opacity-0");
       socialNetworksRef.current?.classList.remove("pointer-events-none");
     }
+
     Flip.from(state, {
       duration: 1,
       ease: "power3.inOut",
@@ -206,7 +204,8 @@ export default function Home() {
         onClick={setSelectedProject}
         scrollPos={scrollPos}
         containerRef={containerRef}
-        mobileMargin={PROJECTS_MOBILE_MARGIN}
+        showProjects={showProjects}
+        parentRef={firstPageRoot}
       />
     </div>
   );

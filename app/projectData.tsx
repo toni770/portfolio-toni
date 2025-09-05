@@ -5,11 +5,26 @@ export type project = {
   solution: string;
   technologies: string[];
   image: string;
-  link?: string;
   tags: string[];
+  links?: {
+    name?: string;
+    url: string;
+    type?: "reward";
+  }[];
 };
 
 const projectData: project[] = [
+  {
+    name: "Magical Smile",
+    description: "Videojuego móvil para niños pequeños.",
+    problem:
+      "El cliente buscaba crear una marca orientada a juegos y contenido visual para niños pequeños, necesitando un videojuego que reforzara su identidad y resultara atractivo.",
+    solution:
+      "Desarrollo de un juego para móviles y tablets con una estética alegre, colorida y adaptada al gusto infantil, cumpliendo con las especificaciones del cliente.",
+    technologies: ["Unity", "Android", "IOS"],
+    image: "/MockUpMagical.png",
+    tags: ["App"],
+  },
   {
     name: "No.Flights",
     description: "Plataforma de reserva de vuelos privados de último minuto.",
@@ -20,6 +35,13 @@ const projectData: project[] = [
     technologies: ["React Native", "Node.js", "Express.js", "Pasarela de pago"],
     image: "/MockUpNoFlights.jpg",
     tags: ["App"],
+    links: [
+      {
+        url: "https://www.elpuntavui.cat/societat/article/2356498-l-aplicacio-no-flights-guanya-la-dotzena-mostra-d-emprenedors-de-girona.html",
+        type: "reward",
+        name: "12ª Mostra d'Emprenedors de Girona",
+      },
+    ],
   },
   {
     name: "KheirApp",
@@ -30,7 +52,11 @@ const projectData: project[] = [
       "Desarrollo de una aplicación móvil que permite localizar mezquitas en España mediante geolocalización y recibir notificaciones con las últimas novedades.",
     technologies: ["React Native", "Notificaciones Push", "Wordpress"],
     image: "/MockUpKheirApp.png",
-    link: "https://kheirapp.com",
+    links: [
+      {
+        url: "https://kheirapp.com",
+      },
+    ],
     tags: ["App"],
   },
   {
@@ -43,7 +69,16 @@ const projectData: project[] = [
       "App que recopila y analiza datos en tiempo real, ofreciendo recomendaciones personalizadas mediante inteligencia artificial para mejorar el control de la enfermedad.",
     technologies: ["React Native", "Integración API", "Chat", "AI"],
     image: "/MockUpDaia.png",
-    link: "https://daia.pro/",
+    links: [
+      {
+        url: "https://daia.pro/",
+      },
+      {
+        url: "https://www.diaridegirona.cat/economia/2025/01/23/guardonen-aplicacio-per-gestionar-diabetis-113648917.html",
+        type: "reward",
+        name: "Impulsa Startup",
+      },
+    ],
     tags: ["App", "AI"],
   },
   {
@@ -55,7 +90,11 @@ const projectData: project[] = [
       "Desarrollo de una tienda online de electrodomésticos totalmente integrada con el ERP de la empresa, sincronizando pedidos, usuarios y productos.",
     technologies: ["Web", "WordPress", "Integración API", "E-commerce"],
     image: "/MockUpMegafactory.png",
-    link: "https://megafactory.es",
+    links: [
+      {
+        url: "https://megafactory.es",
+      },
+    ],
     tags: ["Web", "Integraciones"],
   },
   {
@@ -67,7 +106,11 @@ const projectData: project[] = [
       "Rediseño y mejora del sistema de gestión, adaptándolo a los requisitos concretos del cliente para ofrecer una solución más completa, flexible y eficiente.",
     technologies: ["React", "Firebase", "Firestore"],
     image: "/MockUpVoleiJam.png",
-    link: "https://voleijam.cat",
+    links: [
+      {
+        url: "https://voleijam.cat",
+      },
+    ],
     tags: ["Web"],
   },
   {
@@ -79,17 +122,6 @@ const projectData: project[] = [
       "Plataforma digital que conecta a propietarios de embarcaciones con proveedores especializados, permitiendo solicitar, gestionar y seguir servicios de mantenimiento y reparación desde web o móvil.",
     technologies: ["WordPress", "Pasarela de pago", "React Native"],
     image: "/MockUpBoatCare.png",
-    tags: ["App"],
-  },
-  {
-    name: "Magical Smile",
-    description: "Videojuego móvil para niños pequeños.",
-    problem:
-      "El cliente buscaba crear una marca orientada a juegos y contenido visual para niños pequeños, necesitando un videojuego que reforzara su identidad y resultara atractivo.",
-    solution:
-      "Desarrollo de un juego para móviles y tablets con una estética alegre, colorida y adaptada al gusto infantil, cumpliendo con las especificaciones del cliente.",
-    technologies: ["Unity", "Android", "IOS"],
-    image: "/MockUpMagical.png",
     tags: ["App"],
   },
 ];

@@ -30,6 +30,7 @@
   --text-7xl: clamp(4rem, 2vw, 4.5rem);
   --text-8xl: clamp(4rem, 10vw, 6rem);
   --text-9xl: clamp(6rem, 10vw, 8rem);
+  --text-10xl: clamp(10rem, 10vw, 12rem);
 
   /* Animated background Colors */
   --color-bg1: rgb(0, 0, 0);

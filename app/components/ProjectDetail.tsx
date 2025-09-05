@@ -1,6 +1,6 @@
 import React from "react";
 import { project } from "../projectData";
-import { XMarkIcon, LinkIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import { InfiniteProjectTech } from "./InfiniteProjectTech";
 
 const ProjectDetail = ({
@@ -21,7 +21,7 @@ const ProjectDetail = ({
       <div className="relative  rounded-t-xl h-[5%] ">
         <div
           onClick={onClose}
-          className="flex justify-end p-3 absolute top-0 right-0"
+          className="flex justify-end p-3 absolute top-0 right-0 cursor-pointer"
         >
           <XMarkIcon className="w-[3rem] h-[3rem]" />
         </div>
@@ -29,17 +29,26 @@ const ProjectDetail = ({
       <div className="flex flex-col justify-between h-[95%]">
         <div className="p-7 pt-2 border-b border-darkGray">
           <div className="flex flex-wrap flex-col md:flex-row justify-between">
-            <h1 className="text-6xl md:text-7xl  pb-2">{project.name}</h1>
-            {project.link && (
-              <div className="flex gap-2 items-center py-2 ">
-                <LinkIcon className="w-5 h-5" />
-                <a href={project.link} className="underline" target="_blank">
-                  {project.link}
-                </a>
-              </div>
-            )}
+            <div>
+              <h1 className="text-6xl md:text-7xl  pb-2">{project.name}</h1>
+
+              <p>{project.description}</p>
+            </div>
+            <div className="flex justify-end flex-col">
+              {project.links?.map((link, index) => (
+                <div key={index} className="flex gap-2 items-center ">
+                  {link.type === "reward" ? (
+                    <TrophyIcon className="w-5 h-5" />
+                  ) : (
+                    <LinkIcon className="w-5 h-5" />
+                  )}
+                  <a href={link.url} className="underline" target="_blank">
+                    {link.name ? link.name : link.url}
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
-          <p>{project.description}</p>
         </div>
         <div className="flex h-full flex-col md:flex-row overflow-y-auto">
           <div className="flex-1 md:border-r border-darkGray w-full pb-0 p-10">

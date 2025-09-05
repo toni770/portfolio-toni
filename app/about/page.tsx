@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { KeplerStd } from "../fonts";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
@@ -33,7 +33,7 @@ const About = () => {
         <AnimatedBackground />
         <div className="absolute top-0 mt-20 md:mt-30 z-[-1] rounded-xl w-[70%] md:w-[60%] lg:w-100 h-[60%] md:h-[70%] overflow-hidden ">
           <Image
-            src="/foto.jpeg"
+            src="/fotoAbout.jpg"
             alt="Toni"
             fill
             priority
@@ -41,12 +41,15 @@ const About = () => {
           />
         </div>
         <h1 className="text-4xl md:text-5xl w-[80%] md:w-[50%] text-center mb-10 md:mb-15">
-          Im a creative
-          <span className={`${KeplerStd.className}`}> freelance</span> helping
-          startups with the design,
-          <span className={`${KeplerStd.className}`}> development</span>, and
-          maintenance of high-end
-          <span className={`${KeplerStd.className}`}> webflow</span> websites.
+          Desarrollador
+          <span className={`${KeplerStd.className}`}> fullstack</span> enfocado
+          en la creación de
+          <span className={`${KeplerStd.className}`}>
+            {" "}
+            MVP e integraciones.{" "}
+          </span>
+          Corto el ruido y soluciono{" "}
+          <span className={`${KeplerStd.className}`}> problemas reales.</span>
         </h1>
         <ArrowDownIcon className="w-9 h-9 mb-5" />
         <p>Que puedo hacer por ti?</p>

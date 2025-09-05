@@ -9,6 +9,7 @@ const Body = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
   return (
     <body
+      suppressHydrationWarning
       className={`${
         hostGrotesk.className
       } antialiased flex flex-col min-h-screen text-base  ${
