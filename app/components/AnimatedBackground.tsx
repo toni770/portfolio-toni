@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 
+// Animated background gradient in about page
 const AnimatedBackground: React.FC = () => {
   const interBubbleRef = useRef<HTMLDivElement | null>(null);
 

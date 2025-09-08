@@ -6,9 +6,9 @@ export const hostGrotesk = Host_Grotesk({
 });
 
 export const KeplerStd = localFont({
-  src: "../public/KeplerStdItalic.otf",
+  src: "../public/fonts/KeplerStdItalic.otf",
 });
 
 export const AuxMono = localFont({
-  src: "../public/AuxMono.otf",
+  src: "../public/fonts/AuxMono.otf",
 });

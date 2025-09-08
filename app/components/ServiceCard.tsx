@@ -1,5 +1,6 @@
 import { KeplerStd } from "../fonts";
 
+// Card information for services
 const ServiceCard = ({
   title,
   subtitle,

@@ -3,7 +3,9 @@ import { project } from "../projectData";
 import { XMarkIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import { InfiniteProjectTech } from "./InfiniteProjectTech";
 import Image from "next/image";
+import { texts } from "../texts";
 
+// Project modal to show project details.
 const ProjectDetail = ({
   project,
   onClose,
@@ -14,8 +16,7 @@ const ProjectDetail = ({
   return (
     <div
       onClick={(e) => {
-        e.stopPropagation(); // bloquea el click en el padre
-        console.log("Child clicked");
+        e.stopPropagation();
       }}
       className=" text-black rounded-xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:w-[70%] w-[90%] h-[95%] z-30 flex flex-col bg-white"
     >
@@ -69,17 +70,22 @@ const ProjectDetail = ({
                   fill
                   priority
                   className="w-full h-full object-contain"
+                  sizes="50vw"
                 />
               </div>
             )}
           </div>
           <div className="flex-1 md:border-l border-darkGray w-full p-10 flex flex-col justify-around">
             <div className="pb-5">
-              <p className="underline pb-5">Problema</p>
+              <p className="underline pb-5">
+                {texts.home.projectDetail.problem}
+              </p>
               <p>{project.problem}</p>
             </div>
             <div>
-              <p className="underline pb-5">Solución</p>
+              <p className="underline pb-5">
+                {texts.home.projectDetail.solution}
+              </p>
               <p>{project.solution}</p>
             </div>
           </div>

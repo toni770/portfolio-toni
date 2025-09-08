@@ -1,5 +1,6 @@
 import SocialNetworks from "./components/SocialNetworks";
 
+// Footer component.
 export default function Footer({ className }: { className?: string }) {
   return (
     <div

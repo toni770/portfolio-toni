@@ -8,7 +8,9 @@ import {
   ChatBubbleLeftIcon,
 } from "@heroicons/react/24/solid";
 import Button from "./Button";
+import { texts } from "../texts";
 
+// Contact Form.
 const ContactForm = () => {
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
@@ -26,7 +28,7 @@ const ContactForm = () => {
       <div className="flex flex-col md:flex-row gap-7 md:gap-2">
         <Input
           className="flex-1"
-          label="Nombre"
+          label={texts.contact.form.nameLabel}
           type="text"
           icon={<UserIcon className="w-5 h-5 text-darkGray" />}
           onChange={(e) => setName(e.target.value)}
@@ -34,7 +36,7 @@ const ContactForm = () => {
         />
         <Input
           className="flex-1"
-          label="Telefono"
+          label={texts.contact.form.phoneLabel}
           type="phone"
           icon={<PhoneIcon className="w-5 h-5 text-darkGray" />}
           onChange={(e) => setPhone(e.target.value)}
@@ -44,7 +46,7 @@ const ContactForm = () => {
 
       <Input
         className="flex-1"
-        label="Correo electronico"
+        label={texts.contact.form.emailLabel}
         type="email"
         icon={<EnvelopeIcon className="w-5 h-5 text-darkGray" />}
         onChange={(e) => setEmail(e.target.value)}
@@ -52,14 +54,14 @@ const ContactForm = () => {
       />
       <Input
         className="flex-1"
-        label="Mensaje"
+        label={texts.contact.form.messageLabel}
         type="textArea"
         icon={<ChatBubbleLeftIcon className="w-5 h-5 text-darkGray" />}
         onChange={(e) => setMessage(e.target.value)}
         value={message}
       />
       <Button
-        text="Enviar"
+        text={texts.contact.form.submitLabel}
         className="w-[30%] p-3 px-30 border-white mb-10 md:mb-0"
         onClick={SendMail}
       />

@@ -7,6 +7,8 @@ const socialNetworks = [
   { name: "Linkedin", url: Config.url.linkedin },
   { name: "Gmail", url: Config.url.gmail },
 ];
+
+// List of Social Networks.
 const SocialNetworks = forwardRef<
   HTMLDivElement,
   {

@@ -7,5 +7,9 @@ const Config = {
   config: {
     showProjectFilter: false,
   },
+  contact: {
+    email: "tonimartin@gmail.com",
+    phone: "+34 671 678 023",
+  },
 };
 export default Config;

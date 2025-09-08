@@ -6,25 +6,16 @@ import { ArrowDownIcon } from "@heroicons/react/24/solid";
 import ServiceList from "../components/ServiceList";
 import AboutInfiniteText from "../components/AboutInfiniteText";
 import AnimatedBackground from "../components/AnimatedBackground";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { mobileBgAnimation } from "../animations/aboutAnimations";
+import { texts } from "../texts";
+import { highlightText } from "../utils";
+
+// About page.
 const About = () => {
   const imageBgRef = useRef<HTMLImageElement>(null);
   const secondPartRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.from(imageBgRef.current, {
-      opacity: 0,
-      scale: 0.5,
-      ease: "power2.inOut",
-      duration: 1,
-      scrollTrigger: {
-        trigger: secondPartRef.current,
-        start: "top 70%",
-        end: "top 20%",
-        scrub: 1,
-      },
-    });
+    mobileBgAnimation(imageBgRef, secondPartRef);
   }, []);
 
   return (
@@ -37,22 +28,15 @@ const About = () => {
             alt="Toni"
             fill
             priority
-            className=" object-cover"
+            className="object-cover"
+            sizes="80vw"
           />
         </div>
         <h1 className="text-4xl md:text-5xl w-[80%] md:w-[50%] text-center mb-10 md:mb-15">
-          Desarrollador
-          <span className={`${KeplerStd.className}`}> fullstack</span> enfocado
-          en la creación de
-          <span className={`${KeplerStd.className}`}>
-            {" "}
-            MVP e integraciones.{" "}
-          </span>
-          Corto el ruido y soluciono{" "}
-          <span className={`${KeplerStd.className}`}> problemas reales.</span>
+          {highlightText(texts.about.title)}
         </h1>
         <ArrowDownIcon className="w-9 h-9 mb-5" />
-        <p>Que puedo hacer por ti?</p>
+        <p>{texts.about.subtitle}</p>
       </div>
       <div className="flex flex-col items-center flex-1 md:min-h-[calc(100vh-3rem)]  min-h-[calc(100vh-6rem)]">
         <AboutInfiniteText />

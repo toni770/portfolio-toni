@@ -11,6 +11,7 @@ const Links = [
   { name: "Contacto", href: "/contact" },
 ];
 
+// Links used in Header.Both Mobile and Desktop format.
 export default function NavLinks({ className }: { className?: string }) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);

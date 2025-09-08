@@ -23,7 +23,7 @@ const projectData: project[] = [
     solution:
       "Desarrollo de un juego para móviles y tablets con una estética alegre, colorida y adaptada al gusto infantil, cumpliendo con las especificaciones del cliente.",
     technologies: ["Unity", "Android", "IOS"],
-    image: "/MockUpMagical.png",
+    image: "/projects/images/MockUpMagical.png",
     tags: ["App"],
   },
   {
@@ -34,7 +34,7 @@ const projectData: project[] = [
     solution:
       "Desarrollo de una aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas y operadores de jets privados, permitiendo completar reservas en pocos pasos.",
     technologies: ["React Native", "Node.js", "Express.js", "Pasarela de pago"],
-    image: "/MockUpNoFlights.jpg",
+    image: "/projects/images/MockUpNoFlights.jpg",
     tags: ["App"],
     links: [
       {
@@ -52,7 +52,7 @@ const projectData: project[] = [
     solution:
       "Desarrollo de una aplicación móvil que permite localizar mezquitas en España mediante geolocalización y recibir notificaciones con las últimas novedades.",
     technologies: ["React Native", "Notificaciones Push", "Wordpress"],
-    image: "/MockUpKheirApp.png",
+    image: "/projects/images/MockUpKheirApp.png",
     links: [
       {
         url: "https://kheirapp.com",
@@ -69,7 +69,7 @@ const projectData: project[] = [
     solution:
       "App que recopila y analiza datos en tiempo real, ofreciendo recomendaciones personalizadas mediante inteligencia artificial para mejorar el control de la enfermedad.",
     technologies: ["React Native", "Integración API", "Chat", "AI"],
-    image: "/MockUpDaia.png",
+    image: "/projects/images/MockUpDaia.png",
     links: [
       {
         url: "https://daia.pro/",
@@ -83,7 +83,7 @@ const projectData: project[] = [
     tags: ["App", "AI"],
     gif: {
       platform: "mobile",
-      url: "/daia.gif",
+      url: "/projects/gif/daia.gif",
     },
   },
   {
@@ -94,7 +94,7 @@ const projectData: project[] = [
     solution:
       "Desarrollo de una tienda online de electrodomésticos totalmente integrada con el ERP de la empresa, sincronizando pedidos, usuarios y productos.",
     technologies: ["Web", "WordPress", "Integración API", "E-commerce"],
-    image: "/MockUpMegafactory.png",
+    image: "/projects/images/MockUpMegafactory.png",
     links: [
       {
         url: "https://megafactory.es",
@@ -110,7 +110,7 @@ const projectData: project[] = [
     solution:
       "Rediseño y mejora del sistema de gestión, adaptándolo a los requisitos concretos del cliente para ofrecer una solución más completa, flexible y eficiente.",
     technologies: ["React", "Firebase", "Firestore"],
-    image: "/MockUpVoleiJam.png",
+    image: "/projects/images/MockUpVoleiJam.png",
     links: [
       {
         url: "https://voleijam.cat",
@@ -119,7 +119,7 @@ const projectData: project[] = [
     tags: ["Web"],
     gif: {
       platform: "pc",
-      url: "/voleijam.gif",
+      url: "/projects/gif/voleijam.gif",
     },
   },
   {
@@ -130,7 +130,7 @@ const projectData: project[] = [
     solution:
       "Plataforma digital que conecta a propietarios de embarcaciones con proveedores especializados, permitiendo solicitar, gestionar y seguir servicios de mantenimiento y reparación desde web o móvil.",
     technologies: ["WordPress", "Pasarela de pago", "React Native"],
-    image: "/MockUpBoatCare.png",
+    image: "/projects/images/MockUpBoatCare.png",
     tags: ["App"],
   },
 ];

@@ -9,10 +9,11 @@ import React, {
 } from "react";
 import { AuxMono } from "../fonts";
 import projectData, { project } from "../projectData";
-import Image from "next/image";
 import Config from "../config";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import gsap from "gsap";
+import ProjectCard from "./ProjectCard";
+import { scrollAnimation } from "../animations/projectListAnimations";
 
 const allTags = projectData.flatMap((project) => project.tags);
 const uniqueTags = ["Todos", ...new Set(allTags)];
@@ -43,6 +44,7 @@ const ProjectList = forwardRef<
     const rightButtonRef = useRef<HTMLDivElement>(null);
     const leftMargin = useRef<number>(0);
 
+    // Scroll until gets to the end or the start of the list. Then, it jumps to the other side of the list to infinite scroll.
     function handleScroll(left: boolean) {
       if (isAnimating.current || !containerRef.current || !cardRef.current)
         return;
@@ -56,31 +58,19 @@ const ProjectList = forwardRef<
 
       const totalWidth = (containerRef.current.scrollWidth + GAP) / 2;
 
-      console.log(scrollPos.current);
-
+      // If scrollPos is less than leftMargin, it means we are at the end of the list. So, we jump to the start of the list.
       if (scrollPos.current < leftMargin.current) {
-        console.log("SALTO");
-        console.log(step + leftMargin.current);
-        scrollPos.current = totalWidth - step + leftMargin.current; // saltamos al "mismo card" en la segunda copia
-        containerRef.current.scrollLeft = totalWidth + leftMargin.current; // salto instantáneo sin animación
-      } else if (scrollPos.current > totalWidth + leftMargin.current) {
-        console.log("SALTO");
+        scrollPos.current = totalWidth - step + leftMargin.current;
+        containerRef.current.scrollLeft = totalWidth + leftMargin.current;
+      }
+      // If scrollPos is greater than totalWidth + leftMargin, it means we are at the start of the list. So, we jump to the end of the list.
+      else if (scrollPos.current > totalWidth + leftMargin.current) {
         const firstPos = 0;
-        console.log(firstPos + step);
         scrollPos.current = firstPos + step + leftMargin.current;
-        containerRef.current.scrollLeft = firstPos + leftMargin.current; // salto instantáneo
+        containerRef.current.scrollLeft = firstPos + leftMargin.current;
       }
 
-      console.log(scrollPos.current);
-
-      gsap.to(containerRef.current, {
-        scrollLeft: scrollPos.current,
-        duration: 0.5,
-        ease: "power3.out",
-        onComplete: () => {
-          isAnimating.current = false;
-        },
-      });
+      scrollAnimation(containerRef, scrollPos, isAnimating);
     }
     useEffect(() => {
       if (showProjects) caculateWidth();
@@ -109,8 +99,8 @@ const ProjectList = forwardRef<
       };
     }, []);
 
+    // Calculate width of the card to march number of cards that can fit in the screen.
     function caculateWidth() {
-      console.log("CALCULATE WIDTH");
       const container = containerRef.current;
       if (
         !container ||
@@ -122,12 +112,13 @@ const ProjectList = forwardRef<
 
       let nElements = 3;
 
-      if (window.matchMedia("(min-width: 1024px)").matches) nElements = 4;
+      if (window.matchMedia("(min-width: 1024px)").matches) nElements = 3;
       else if (window.matchMedia("(min-width: 768px)").matches) nElements = 2;
       else if (window.matchMedia("(min-width: 640px)").matches) nElements = 1;
       else nElements = 1;
       const clientWidth = container.clientWidth;
 
+      // Calculate width to fit with buttons and gap.
       const width =
         (clientWidth -
           leftButtonRef.current?.offsetWidth -
@@ -140,12 +131,14 @@ const ProjectList = forwardRef<
 
       const newLeftMargin = width - leftButtonRef.current?.offsetWidth;
 
+      // If didn't change, we fix scrollPos with new data. This happens when this function is called with no real resize.
       if (newLeftMargin === leftMargin.current) {
         const result = scrollPos.current - leftMargin.current;
         console.log("RESULT: ", result);
 
         scrollPos.current = result + newLeftMargin;
       } else {
+        // If real resize, reset scrollPos, because other method fet buged for no reason.
         scrollPos.current = newLeftMargin;
       }
 
@@ -222,46 +215,5 @@ const ProjectList = forwardRef<
   }
 );
 ProjectList.displayName = "ProjectList";
-
-const ProjectCard = ({
-  project,
-  onClick,
-  cardRef,
-  width,
-}: {
-  project: project;
-  onClick: () => void;
-  cardRef?: React.RefObject<HTMLDivElement | null>;
-  width: number;
-}) => {
-  const [hover, setHover] = useState(false);
-
-  return (
-    <div
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      key={project.name}
-      ref={cardRef}
-      style={{
-        width: hover ? `${width + 100}px` : `${width}px`,
-        transition: "width 0.2s ease-in-out",
-      }}
-      className={`relative rounded-xl  h-full transition-all duration-300 ease-in-out md:hover:w-[30rem] hover:shadow-lg hover:z-10 inline-block align-top ${
-        hover ? "w-[30rem]" : ""
-      }`}
-      onClick={onClick}
-    >
-      <Image
-        className="rounded-xl"
-        src={project.image}
-        alt={project.name}
-        fill
-        priority
-        objectFit="cover"
-      />
-      <div className="absolute bottom-0 left-0 w-full h-full transition-all duration-300 ease-in-out"></div>
-    </div>
-  );
-};
 
 export default ProjectList;

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AuxMono } from "../fonts";
-import gsap from "gsap";
+import { infiniteSliderAnimation } from "../animations/projectDetailAnimations";
 
+// Infinite Slider for project detail tech used.
 export const InfiniteProjectTech = ({
   technologies,
 }: {
@@ -23,12 +24,11 @@ export const InfiniteProjectTech = ({
   ));
 
   useEffect(() => {
-    requestAnimationFrame(animation);
+    infiniteSliderAnimation(sliderRef);
     const el = mesureRef.current;
     if (!el) return;
 
     const checkOverflow = () => {
-      console.log("RESIZE");
       const hasOverflow = el.scrollWidth > el.clientWidth;
       setIsOverflowing(hasOverflow);
     };
@@ -40,22 +40,6 @@ export const InfiniteProjectTech = ({
     return () => window.removeEventListener("resize", checkOverflow);
   }, []);
 
-  const leftScroll = useRef(0);
-  const animation = () => {
-    if (sliderRef.current) {
-      const totalWidth = sliderRef.current.scrollWidth / 2;
-
-      if (leftScroll.current > totalWidth) {
-        leftScroll.current = 0;
-        sliderRef.current.scrollLeft = 0;
-      } else {
-        leftScroll.current += 0.5;
-      }
-
-      gsap.set(sliderRef.current, { scrollLeft: leftScroll.current });
-      requestAnimationFrame(animation);
-    }
-  };
   return (
     <>
       <div
