@@ -11,6 +11,7 @@ import {
   initAnimations,
   showProjectsAnimation,
 } from "./animations/homeAnimations";
+import { useHeader } from "./useHeader";
 
 // Home Page.
 export default function Home() {
@@ -25,9 +26,16 @@ export default function Home() {
   const scrollPos = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [showProjects, setShowProjects] = useState(false);
+  const { setHideHeader } = useHeader();
 
   function handleClose() {
     setSelectedProject(null);
+    setHideHeader(false);
+  }
+
+  function handleOpen(project: project) {
+    setSelectedProject(project);
+    setHideHeader(true);
   }
 
   useEffect(() => {
@@ -51,7 +59,7 @@ export default function Home() {
   }
 
   return (
-    <div ref={root}>
+    <div ref={root} className="w-full">
       <div
         ref={firstPageRoot}
         className="flex flex-col justify-between items-center md:items-start transition-all duration-1000 ease-in-out md:h-[calc(100vh-4rem)] md:min-h-[calc(100vh-7rem)] min-h-[calc(100vh-6rem)] h-[calc(100vh)] w-full py-7 pt-20 md:pt-0"
@@ -77,7 +85,7 @@ export default function Home() {
 
         <div
           ref={imageRef}
-          className="pointer-events-none opacity-100 md:opacity-100 transition-opacity duration-1000 ease-in-out absolute inset-0 m-auto md:top-auto md:left-auto md:translate-x-0 md:translate-y-0 md:bottom-0 md:right-0 z-[1]  md:w-[50%] lg:w-[35%] md:h-[80%] h-[40%] w-100 bg-image:url('/LogoArmadilloGlow.png')"
+          className="w-full pointer-events-none opacity-100 md:opacity-100 transition-opacity duration-1000 ease-in-out absolute inset-0 m-auto md:top-auto md:left-auto md:translate-x-0 md:translate-y-0 md:bottom-0 md:right-0 z-[1]  md:w-[50%] lg:w-[35%] md:h-[80%] h-[40%] w-100 bg-image:url('/LogoArmadilloGlow.png')"
         >
           <Image
             src="/LogoArmadilloGlow.png"
@@ -115,8 +123,8 @@ export default function Home() {
 
       <ProjectList
         ref={projectsRef}
-        className="w-full"
-        onClick={setSelectedProject}
+        className="w-full h-0 "
+        onClick={handleOpen}
         scrollPos={scrollPos}
         containerRef={containerRef}
         showProjects={showProjects}

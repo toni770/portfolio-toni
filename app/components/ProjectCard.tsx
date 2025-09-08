@@ -25,8 +25,8 @@ const ProjectCard = ({
         width: hover ? `${width + 100}px` : `${width}px`,
         transition: "width 0.2s ease-in-out",
       }}
-      className={`relative rounded-xl  h-full transition-all duration-300 ease-in-out md:hover:w-[30rem] hover:shadow-lg hover:z-10 inline-block align-top ${
-        hover ? "w-[30rem]" : ""
+      className={`relative rounded-xl  h-full transition-all duration-300 ease-in-out  hover:shadow-lg inline-block align-top ${
+        hover ? "md:w-[30rem]" : ""
       }`}
       onClick={onClick}
     >

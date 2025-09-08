@@ -1,12 +1,14 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import Image from "next/image";
-import { KeplerStd } from "../fonts";
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
 import ServiceList from "../components/ServiceList";
 import AboutInfiniteText from "../components/AboutInfiniteText";
 import AnimatedBackground from "../components/AnimatedBackground";
-import { mobileBgAnimation } from "../animations/aboutAnimations";
+import {
+  mobileBgAnimation,
+  mobileBgAnimationRevert,
+} from "../animations/aboutAnimations";
 import { texts } from "../texts";
 import { highlightText } from "../utils";
 
@@ -16,6 +18,7 @@ const About = () => {
   const secondPartRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     mobileBgAnimation(imageBgRef, secondPartRef);
+    return () => mobileBgAnimationRevert();
   }, []);
 
   return (

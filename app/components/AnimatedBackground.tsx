@@ -37,7 +37,7 @@ const AnimatedBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="gradient-bg w-full h-full md:h-[calc(100vh-4rem)] absolute z-[-2] overflow-hidden top-0 md:top-[4rem] left-0">
+    <div className="gradient-bg w-full h-full md:h-[calc(100vh-4rem)] min-h-[calc(100vh)] absolute z-[-2] overflow-hidden top-0 md:top-[4rem] left-0">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="fixed top-0 left-0 w-0 h-0"

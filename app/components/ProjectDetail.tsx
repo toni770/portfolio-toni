@@ -28,8 +28,8 @@ const ProjectDetail = ({
           <XMarkIcon className="w-[3rem] h-[3rem]" />
         </div>
       </div>
-      <div className="flex flex-col justify-between h-[95%]">
-        <div className="p-7 pt-2 border-b border-darkGray">
+      <div className="flex flex-col justify-between h-[95%] overflow-y-auto">
+        <div className="p-7 pt-2 border-b border-darkGray ">
           <div className="flex flex-wrap flex-col md:flex-row justify-between">
             <div>
               <h1 className="text-6xl md:text-7xl  pb-2">{project.name}</h1>
@@ -53,7 +53,7 @@ const ProjectDetail = ({
           </div>
         </div>
         <div
-          className={`flex h-full flex-col overflow-y-auto ${
+          className={`flex h-full flex-col  ${
             project.gif && project.gif.platform === "mobile" && "md:flex-row"
           }`}
         >
@@ -90,8 +90,8 @@ const ProjectDetail = ({
             </div>
           </div>
         </div>
-        <InfiniteProjectTech technologies={project.technologies} />
       </div>
+      <InfiniteProjectTech technologies={project.technologies} />
     </div>
   );
 };

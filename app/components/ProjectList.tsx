@@ -148,7 +148,7 @@ const ProjectList = forwardRef<
 
     const [width, setWidth] = useState<number>(200);
     return (
-      <div className={`md:pb-7 h-full flex flex-col  ${className}`} ref={ref}>
+      <div className={`md:pb-7 flex flex-col  ${className}`} ref={ref}>
         {Config.config.showProjectFilter && (
           <div
             className={`flex gap-5 ${AuxMono.className} text-base md:text-md text-darkGray justify-center md:justify-end p-7 pt-0 flex-wrap`}
@@ -170,14 +170,14 @@ const ProjectList = forwardRef<
         <div className="relative w-full flex-1 flex relative">
           <div
             ref={leftButtonRef}
-            className=" cursor-pointer rounded-r-xl z-15 absolute left-0 hover:bg-black/50 bg-black/25 transition-all duration-200 ease-in-out w-[61px] h-full flex items-center justify-center"
+            className=" cursor-pointer rounded-r-xl z-15 absolute left-0 hover:bg-black/50 bg-black/25 transition-all duration-200 ease-in-out w-[40px] md:w-[60px] h-full flex items-center justify-center"
             onClick={() => handleScroll(true)}
           >
             <ChevronLeftIcon className="w-10 h-10 " />
           </div>
           <div
             ref={rightButtonRef}
-            className=" border-xl rounded-l-xl cursor-pointer z-15 absolute right-0 hover:bg-black/50 bg-black/25 transition-all duration-200 ease-in-out w-[61px] h-full flex items-center justify-center"
+            className=" border-xl rounded-l-xl cursor-pointer z-15 absolute right-0 hover:bg-black/50 bg-black/25 transition-all duration-200 ease-in-out w-[40px] md:w-[60px] h-full flex items-center justify-center"
             onClick={() => handleScroll(false)}
           >
             <ChevronRightIcon className="w-10 h-10" />

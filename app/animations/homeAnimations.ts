@@ -68,6 +68,9 @@ function gsapFlipAnim(forward: boolean) {
     _firstPageRoot.current?.classList.remove("h-[calc(100vh)]");
     _firstPageRoot.current?.classList.add("h-[calc(100vh-6rem)]");
 
+    _projectsRef.current?.classList.remove("h-0");
+    _projectsRef.current?.classList.add("h-full");
+
     _imageRef.current?.classList.remove("md:bottom-0");
     _imageRef.current?.classList.remove("md:h-[80%]");
     _imageRef.current?.classList.remove("lg:w-[35%]");
@@ -98,6 +101,9 @@ function gsapFlipAnim(forward: boolean) {
     _firstPageRoot.current?.classList.remove("md:h-[calc(100vh-7rem)]");
     _firstPageRoot.current?.classList.remove("h-[calc(100vh-6rem)]");
     _firstPageRoot.current?.classList.add("h-[calc(100vh)]");
+
+    _projectsRef.current?.classList.add("h-0");
+    _projectsRef.current?.classList.remove("h-full");
 
     _imageRef.current?.classList.remove("md:h-70");
     _imageRef.current?.classList.remove("md:w-[20%]");

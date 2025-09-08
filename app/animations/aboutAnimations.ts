@@ -2,24 +2,32 @@ import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+let ctx: gsap.Context;
 // Scale and opacity of Background image behind service list in Mobile View
 export function mobileBgAnimation(
   imageBgRef: React.RefObject<HTMLImageElement | null>,
   secondPartRef: React.RefObject<HTMLDivElement | null>
 ) {
   gsap.registerPlugin(ScrollTrigger);
-  gsap.from(imageBgRef.current, {
-    opacity: 0,
-    scale: 0.5,
-    ease: "power2.inOut",
-    duration: 1,
-    scrollTrigger: {
-      trigger: secondPartRef.current,
-      start: "top 70%",
-      end: "top 20%",
-      scrub: 1,
-    },
+  ctx = gsap.context(() => {
+    gsap.from(imageBgRef.current, {
+      opacity: 0,
+      scale: 0.5,
+      ease: "power2.inOut",
+      duration: 1,
+      scrollTrigger: {
+        trigger: secondPartRef.current,
+        start: "top 70%",
+        end: "top 20%",
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
   });
+}
+
+export function mobileBgAnimationRevert() {
+  if (ctx) ctx.revert();
 }
 
 // Infinite Text Animation variables
