@@ -10,7 +10,6 @@ import { project } from "./projectData";
 import ProjectDetail from "./components/ProjectDetail";
 
 export default function Home() {
-  const [isProjects, setIsProjects] = useState(false);
   const imageRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
@@ -49,13 +48,11 @@ export default function Home() {
   function GoToProjects() {
     setShowProjects(true);
     gsapFlipAnim(true);
-    setIsProjects(true);
     tl.current?.play();
   }
   function GoBackHome() {
     setShowProjects(false);
     gsapFlipAnim(false);
-    setIsProjects(false);
     tl.current?.reverse();
   }
 
@@ -175,9 +172,9 @@ export default function Home() {
 
         <div className="px-7 md:w-[50%] lg:w-[40%] flex flex-col items-center md:items-start">
           <Button
-            text={isProjects ? "Volver" : "Ver proyectos"}
+            text={showProjects ? "Volver" : "Ver proyectos"}
             className="border-white w-[250px]"
-            onClick={() => (isProjects ? GoBackHome() : GoToProjects())}
+            onClick={() => (showProjects ? GoBackHome() : GoToProjects())}
             ref={buttonRef}
           />
           <p

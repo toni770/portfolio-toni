@@ -103,12 +103,6 @@ const ProjectList = forwardRef<
     }, []);
 
     useEffect(() => {
-      if (containerRef.current) {
-        console.log("Preparing");
-        containerRef.current.addEventListener("load", () =>
-          console.log("HOLAA")
-        );
-      }
       window.addEventListener("resize", caculateWidth);
       return () => {
         window.removeEventListener("resize", caculateWidth);
@@ -128,7 +122,7 @@ const ProjectList = forwardRef<
 
       let nElements = 3;
 
-      if (window.matchMedia("(min-width: 1024px)").matches) nElements = 3;
+      if (window.matchMedia("(min-width: 1024px)").matches) nElements = 4;
       else if (window.matchMedia("(min-width: 768px)").matches) nElements = 2;
       else if (window.matchMedia("(min-width: 640px)").matches) nElements = 1;
       else nElements = 1;
@@ -146,7 +140,14 @@ const ProjectList = forwardRef<
 
       const newLeftMargin = width - leftButtonRef.current?.offsetWidth;
 
-      scrollPos.current = newLeftMargin;
+      if (newLeftMargin === leftMargin.current) {
+        const result = scrollPos.current - leftMargin.current;
+        console.log("RESULT: ", result);
+
+        scrollPos.current = result + newLeftMargin;
+      } else {
+        scrollPos.current = newLeftMargin;
+      }
 
       containerRef.current.scrollLeft = scrollPos.current;
       leftMargin.current = newLeftMargin;

@@ -11,6 +11,7 @@ export type project = {
     url: string;
     type?: "reward";
   }[];
+  gif?: { platform: "mobile" | "pc"; url: string };
 };
 
 const projectData: project[] = [
@@ -80,6 +81,10 @@ const projectData: project[] = [
       },
     ],
     tags: ["App", "AI"],
+    gif: {
+      platform: "mobile",
+      url: "/daia.gif",
+    },
   },
   {
     name: "Megafactory",
@@ -112,6 +117,10 @@ const projectData: project[] = [
       },
     ],
     tags: ["Web"],
+    gif: {
+      platform: "pc",
+      url: "/voleijam.gif",
+    },
   },
   {
     name: "Boatcare",
