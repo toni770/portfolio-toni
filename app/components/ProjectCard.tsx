@@ -22,12 +22,13 @@ const ProjectCard = ({
       key={project.name}
       ref={cardRef}
       style={{
-        width: hover ? `${width + 100}px` : `${width}px`,
+        width:
+          hover && window.matchMedia("(min-width: 640px)").matches
+            ? `${width + 100}px`
+            : `${width}px`,
         transition: "width 0.2s ease-in-out",
       }}
-      className={`relative rounded-xl  h-full transition-all duration-300 ease-in-out  hover:shadow-lg inline-block align-top ${
-        hover ? "md:w-[30rem]" : ""
-      }`}
+      className={`relative rounded-xl  h-full transition-all duration-300 ease-in-out  hover:shadow-lg inline-block align-top `}
       onClick={onClick}
     >
       <Image

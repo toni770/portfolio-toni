@@ -1,40 +1,48 @@
 import { createContext, PropsWithChildren, useContext } from "react";
 
-type HeaderState = {
+type LayoutState = {
   hideHeader: boolean;
   setHideHeader: (value: boolean) => void;
+  footerInFront: boolean;
+  setFooterInFront: (value: boolean) => void;
 };
 
-const HeaderContext = createContext<HeaderState>({
+const LayoutContext = createContext<LayoutState>({
   hideHeader: false,
   setHideHeader: () => {},
+  footerInFront: false,
+  setFooterInFront: () => {},
 });
 
-export function useHeader() {
-  const value = useContext(HeaderContext);
+export function useLayout() {
+  const value = useContext(LayoutContext);
 
   if (process.env.NODE_ENV !== "production") {
     if (!value) {
-      throw new Error("useHeader must be used within an HeaderProvider");
+      throw new Error("useLayout must be used within an LayoutProvider");
     }
   }
 
   return value;
 }
 
-export const HeaderProvider = ({
+export const LayoutProvider = ({
   hideHeader,
   setHideHeader,
+  footerInFront,
+  setFooterInFront,
   children,
-}: PropsWithChildren<HeaderState>) => {
+}: PropsWithChildren<LayoutState>) => {
   return (
-    <HeaderContext.Provider
+    <LayoutContext.Provider
       value={{
         hideHeader,
         setHideHeader,
+        footerInFront,
+        setFooterInFront,
       }}
     >
       {children}
-    </HeaderContext.Provider>
+    </LayoutContext.Provider>
   );
 };

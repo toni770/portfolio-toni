@@ -11,7 +11,7 @@ import {
   initAnimations,
   showProjectsAnimation,
 } from "./animations/homeAnimations";
-import { useHeader } from "./useHeader";
+import { useLayout } from "./useHeader";
 
 // Home Page.
 export default function Home() {
@@ -26,16 +26,18 @@ export default function Home() {
   const scrollPos = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [showProjects, setShowProjects] = useState(false);
-  const { setHideHeader } = useHeader();
+  const { setHideHeader, setFooterInFront } = useLayout();
 
   function handleClose() {
     setSelectedProject(null);
     setHideHeader(false);
+    setFooterInFront(true);
   }
 
   function handleOpen(project: project) {
     setSelectedProject(project);
     setHideHeader(true);
+    setFooterInFront(false);
   }
 
   useEffect(() => {
@@ -123,7 +125,7 @@ export default function Home() {
 
       <ProjectList
         ref={projectsRef}
-        className="w-full h-0 "
+        className="w-full h-0"
         onClick={handleOpen}
         scrollPos={scrollPos}
         containerRef={containerRef}
