@@ -57,25 +57,7 @@ const ProjectDetail = ({
             project.gif && project.gif.platform === "mobile" && "md:flex-row"
           }`}
         >
-          <div className="hidden md:block flex-1 p-10 h-full">
-            {project.gif && (
-              <div
-                className={`relative w-full ${
-                  project.gif.platform === "mobile" ? "h-full" : "h-[500px]"
-                } `}
-              >
-                <Image
-                  src={project.gif.url}
-                  alt={project.gif.platform}
-                  fill
-                  priority
-                  className="w-full h-full object-contain"
-                  sizes="50vw"
-                />
-              </div>
-            )}
-          </div>
-          <div className="flex-1 md:border-l border-darkGray w-full p-10 flex flex-col justify-around">
+          <div className="flex-1 md:border-r border-darkGray w-full p-10 flex flex-col justify-around">
             <div className="pb-5">
               <p className="underline pb-5">
                 {texts.home.projectDetail.problem}
@@ -88,6 +70,26 @@ const ProjectDetail = ({
               </p>
               <p>{project.solution}</p>
             </div>
+          </div>
+          <div className="block flex-1 p-10 px-2 h-full">
+            {project.gif && (
+              <div
+                className={`relative w-full ${
+                  project.gif.platform === "mobile"
+                    ? "h-[400px] md:h-full"
+                    : "h-[180px] md:h-[500px]"
+                } `}
+              >
+                <Image
+                  src={project.gif.url}
+                  alt={project.gif.platform}
+                  fill
+                  priority
+                  className="w-full h-full object-contain"
+                  sizes="50vw"
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
