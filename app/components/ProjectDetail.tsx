@@ -53,7 +53,7 @@ const ProjectDetail = ({
           </div>
         </div>
         <div
-          className={`flex h-full flex-col  ${
+          className={`flex h-full flex-col ${
             project.gif && project.gif.platform === "mobile" && "md:flex-row"
           }`}
         >
@@ -71,12 +71,12 @@ const ProjectDetail = ({
               <p>{project.solution}</p>
             </div>
           </div>
-          <div className="block flex-1 p-10 px-2 h-full">
+          {/* <div className="block flex-1 p-10 px-2 h-full">
             {project.gif && (
               <div
                 className={`relative w-full ${
                   project.gif.platform === "mobile"
-                    ? "h-[400px] md:h-full"
+                    ? "h-[500px] md:h-full"
                     : "h-[180px] md:h-[500px]"
                 } `}
               >
@@ -90,7 +90,7 @@ const ProjectDetail = ({
                 />
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
       <InfiniteProjectTech technologies={project.technologies} />

@@ -20,14 +20,14 @@ const Contact = () => {
         ref={formRef}
         className=" md:flex-1 min-h-[calc(100vh-6rem)] md:min-h-[calc(100vh-7rem)] md:h-auto pt-15 md:pt-0 md:pb-10 md:pl-7 flex flex-col gap-2 justify-center items-center md:items-start order-2 md:order-1"
       >
-        <h1 className="hidden md:block text-8xl w-1/2 leading-[0.7em] pb-10">
+        <h1 className="hidden md:block text-8xl w-1/2 leading-[0.7em] pb-10 pt-5">
           {highlightText(texts.contact.title)}
         </h1>
         <ContactForm />
       </div>
       <div className="md:flex-1 bg-purple md:h-auto pt-15 pb-10 px-7 flex flex-col  h-[100vh] justify-between text-black bg-[url('/bgGradient.png')] bg-cover order-1 md:order-2">
         <div>
-          <h1 className="block md:hidden text-8xl w-1/2 leading-[0.7em] pb-10 ">
+          <h1 className="block md:hidden text-8xl w-1/2 leading-[0.7em] pb-10 pt-5">
             {highlightText(texts.contact.title)}
           </h1>
           <p className="w-[100%] md:w-[50%]">{texts.contact.subtitle}</p>

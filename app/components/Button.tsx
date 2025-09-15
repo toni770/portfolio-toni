@@ -1,22 +1,26 @@
 "use client";
 import { forwardRef } from "react";
 const Button = forwardRef<
-  HTMLDivElement,
+  HTMLButtonElement,
   {
     text: string;
     className?: string;
     onClick?: () => void;
+    disabled?: boolean;
   }
->(({ text, className, onClick }, ref) => {
+>(({ text, className, onClick, disabled }, ref) => {
   return (
-    <div
+    <button
       ref={ref}
       onClick={onClick}
       role="button"
-      className={`cursor-pointer border border-black p-2 px-15 rounded-4xl flex items-center justify-center ${className}`}
+      disabled={disabled}
+      className={`cursor-pointer border border-black p-2 px-15 rounded-4xl flex items-center justify-center ${className} ${
+        disabled ? "opacity-50 cursor-not-allowed" : ""
+      }`}
     >
       <p>{text}</p>
-    </div>
+    </button>
   );
 });
 Button.displayName = "Button";

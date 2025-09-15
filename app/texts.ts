@@ -11,7 +11,7 @@ export const texts = {
   },
   about: {
     title:
-      "Desarrollador *fullstack* enfocado en la creación de *MVP e integraciones*. Corto el ruido y soluciono *problemas reales*.",
+      "Desarrollador *Fullstack* especializado en creación de *Aplicaciones* e *integraciones*. Elimino la *complejidad* y resuelvo *problemas*.",
     subtitle: "¿Que puedo hacer por ti?",
     infiniteText: "Soluciones personalizadas",
   },

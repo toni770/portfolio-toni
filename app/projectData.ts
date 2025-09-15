@@ -21,7 +21,7 @@ const projectData: project[] = [
     problem:
       "El cliente buscaba crear una marca orientada a juegos y contenido visual para niños pequeños, necesitando un videojuego que reforzara su identidad y resultara atractivo.",
     solution:
-      "Desarrollo de un juego para móviles y tablets con una estética alegre, colorida y adaptada al gusto infantil, cumpliendo con las especificaciones del cliente.",
+      "Un videojuego para móviles y tablets con una estética alegre, colorida y adaptada al gusto infantil, cumpliendo con las especificaciones del cliente.",
     technologies: ["Unity", "Android", "IOS"],
     image: "/projects/images/MockUpMagical.png",
     tags: ["App"],
@@ -30,9 +30,9 @@ const projectData: project[] = [
     name: "No.Flights",
     description: "Plataforma de reserva de vuelos privados de último minuto.",
     problem:
-      "Se requería una solución digital que permitiera reservar vuelos privados de forma rápida e intuitiva, reduciendo la fricción del proceso tradicional.",
+      "Se requería una solución digital que permitiera reservar vuelos de ultimo minuto de forma rápida e intuitiva, reduciendo la fricción del proceso tradicional.",
     solution:
-      "Desarrollo de una aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas y operadores de jets privados, permitiendo completar reservas en pocos pasos.",
+      "Aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas y operadores de jets privados, permitiendo completar reservas en pocos pasos.",
     technologies: ["React Native", "Node.js", "Express.js", "Pasarela de pago"],
     image: "/projects/images/MockUpNoFlights.jpg",
     tags: ["App"],
@@ -43,6 +43,10 @@ const projectData: project[] = [
         name: "12ª Mostra d'Emprenedors de Girona",
       },
     ],
+    gif: {
+      platform: "mobile",
+      url: "/projects/gif/noflights.gif",
+    },
   },
   {
     name: "KheirApp",
@@ -50,7 +54,7 @@ const projectData: project[] = [
     problem:
       "Las comunidades musulmanas carecían de una plataforma centralizada para encontrar mezquitas cercanas y mantenerse informadas sobre noticias y eventos relevantes.",
     solution:
-      "Desarrollo de una aplicación móvil que permite localizar mezquitas en España mediante geolocalización y recibir notificaciones con las últimas novedades.",
+      "Aplicación móvil que permite localizar mezquitas en España mediante geolocalización y recibir notificaciones con las últimas novedades.",
     technologies: ["React Native", "Notificaciones Push", "Wordpress"],
     image: "/projects/images/MockUpKheirApp.png",
     links: [
@@ -90,9 +94,9 @@ const projectData: project[] = [
     name: "Megafactory",
     description: "E-commerce de electrodomésticos integrado con ERP.",
     problem:
-      "La empresa necesitaba una plataforma de venta online que permitiera comercializar sus productos y, al mismo tiempo, estuviera conectada a su sistema ERP para mantener la gestión centralizada.",
+      "La empresa necesitaba una plataforma de venta online que permitiera comercializar sus productos y estuviera conectada a su sistema ERP para una gestión centralizada.",
     solution:
-      "Desarrollo de una tienda online de electrodomésticos totalmente integrada con el ERP de la empresa, sincronizando pedidos, usuarios y productos.",
+      "Tienda online de electrodomésticos totalmente integrada con el ERP de la empresa, sincronizando pedidos, usuarios y productos.",
     technologies: ["Web", "WordPress", "Integración API", "E-commerce"],
     image: "/projects/images/MockUpMegafactory.png",
     links: [

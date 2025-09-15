@@ -7,8 +7,8 @@ import { KeplerStd } from "./fonts";
 
 const Links = [
   { name: "Proyectos", href: "/" },
-  { name: "¿Quién soy?", href: "/about" },
-  { name: "Contacto", href: "/contact" },
+  { name: "¿Quién soy?", href: "/about/" },
+  { name: "Contacto", href: "/contact/" },
 ];
 
 // Links used in Header.Both Mobile and Desktop format.
@@ -19,6 +19,7 @@ export default function NavLinks({ className }: { className?: string }) {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
   return (
     <nav
       className={`fixed md:static pointer-events-none w-full flex px-7 justify-end md:justify-between items-center md:border-b border-darkGray text-darkGray h-[4rem] ${className}`}

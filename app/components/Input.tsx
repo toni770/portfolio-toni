@@ -5,6 +5,7 @@ const Input = ({
   type,
   icon,
   className,
+  name,
   value = "",
   onChange = () => {},
 }: {
@@ -12,6 +13,7 @@ const Input = ({
   type: "text" | "email" | "phone" | "textArea";
   icon?: React.ReactNode;
   className?: string;
+  name?: string;
   value?: string;
   onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -39,8 +41,10 @@ const Input = ({
           className="border p-2 px-3 rounded-xl bg-black border-darkGray w-[100%]"
           type={type}
           maxLength={50}
+          name={name}
           value={value}
           onChange={onChange}
+          required
         />
       )}
     </div>

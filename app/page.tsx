@@ -16,7 +16,7 @@ import { useLayout } from "./useHeader";
 // Home Page.
 export default function Home() {
   const imageRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
   const socialNetworksRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
