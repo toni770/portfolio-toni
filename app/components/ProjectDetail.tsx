@@ -71,7 +71,7 @@ const ProjectDetail = ({
               <p>{project.solution}</p>
             </div>
           </div>
-          {/* <div className="block flex-1 p-10 px-2 h-full">
+          <div className="block flex-1 p-10 px-2 h-full">
             {project.gif && (
               <div
                 className={`relative w-full ${
@@ -90,7 +90,7 @@ const ProjectDetail = ({
                 />
               </div>
             )}
-          </div> */}
+          </div>
         </div>
       </div>
       <InfiniteProjectTech technologies={project.technologies} />
