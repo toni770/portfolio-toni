@@ -45,7 +45,7 @@ const About = () => {
         <AboutInfiniteText />
         <div
           ref={secondPartRef}
-          className="relative md:flex-1 flex items-end  md:bg-[url('/bgSphere.png')] bg-contain bg-center md:bg-bottom bg-no-repeat md:bg-cover"
+          className="relative md:flex-1 flex items-end  md:bg-[url('/BgSphere.png')] bg-contain bg-center md:bg-bottom bg-no-repeat md:bg-cover"
         >
           <Image
             ref={imageBgRef}
