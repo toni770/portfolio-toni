@@ -77,7 +77,7 @@ const ProjectDetail = ({
                 className={`relative w-full ${
                   project.gif.platform === "mobile"
                     ? "h-[500px] md:h-full"
-                    : "h-[180px] md:h-[500px]"
+                    : "h-[250px] md:h-[500px]"
                 } `}
               >
                 <Image

@@ -25,6 +25,10 @@ const projectData: project[] = [
     technologies: ["Unity", "Android", "IOS"],
     image: "/projects/images/MockUpMagical.png",
     tags: ["App"],
+    gif: {
+      platform: "mobile",
+      url: "/projects/gif/magicalSmile.gif",
+    },
   },
   {
     name: "No.Flights",
@@ -63,6 +67,10 @@ const projectData: project[] = [
       },
     ],
     tags: ["App"],
+    gif: {
+      platform: "mobile",
+      url: "/projects/gif/kheirapp.gif",
+    },
   },
   {
     name: "Daia",
@@ -105,6 +113,10 @@ const projectData: project[] = [
       },
     ],
     tags: ["Web", "Integraciones"],
+    gif: {
+      platform: "pc",
+      url: "/projects/gif/megafactory.gif",
+    },
   },
   {
     name: "Voleijam",
@@ -136,6 +148,10 @@ const projectData: project[] = [
     technologies: ["WordPress", "Pasarela de pago", "React Native"],
     image: "/projects/images/MockUpBoatCare.png",
     tags: ["App"],
+    gif: {
+      platform: "mobile",
+      url: "/projects/gif/boatcare.gif",
+    },
   },
 ];
 
