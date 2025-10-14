@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Input from "./Input";
 import {
   EnvelopeIcon,
@@ -9,8 +9,7 @@ import {
 } from "@heroicons/react/24/solid";
 import Button from "./Button";
 import { texts } from "../texts";
-import emailjs from "@emailjs/browser";
-import Config from "../config";
+import ReCAPTCHA from "react-google-recaptcha";
 
 // Contact Form.
 const ContactForm = () => {
@@ -26,12 +25,28 @@ const ContactForm = () => {
 
     try {
       setSending(true);
-      await emailjs.sendForm(
-        Config.emailjs.serviceId,
-        Config.emailjs.templateId,
-        form,
-        Config.emailjs.publicKey
-      );
+      if (!recaptchaRef.current) return;
+
+      const token = await recaptchaRef.current.executeAsync();
+
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          message,
+          captchaToken: token,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.message);
+      }
+
       form.reset();
       setName("");
       setPhone("");
@@ -43,7 +58,7 @@ const ContactForm = () => {
       });
     } catch (err) {
       setStatus({
-        message: "Ha habido un error inesperado.",
+        message: err.message,
         type: "error",
       });
     } finally {
@@ -58,6 +73,9 @@ const ContactForm = () => {
     message: "",
     type: "success",
   });
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   return (
     <form className="flex flex-col gap-7 md:gap-4 w-[80%]" onSubmit={SendMail}>
       <div className="flex flex-col md:flex-row gap-7 md:gap-2">
@@ -106,6 +124,13 @@ const ContactForm = () => {
       >
         {status.message}
       </p>
+
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+        size="invisible"
+        badge="bottomright"
+      />
 
       <Button
         text={texts.contact.form.submitLabel}
