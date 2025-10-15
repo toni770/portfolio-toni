@@ -131,6 +131,7 @@ const ContactForm = () => {
       <Button
         text={texts.contact.form.submitLabel}
         disabled={sending}
+        loading={sending}
         className="w-[30%] p-3 px-30 border-white mb-10 md:mb-0"
       />
     </form>

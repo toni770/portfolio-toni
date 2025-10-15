@@ -4,6 +4,9 @@ import { XMarkIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import { InfiniteProjectTech } from "./InfiniteProjectTech";
 import Image from "next/image";
 import { texts } from "../texts";
+import Skeleton from "react-loading-skeleton";
+import { MobileSkeletonLoader } from "./MobileSkeletonLoader";
+import { ComputerSkeletonLoader } from "./ComputerSkeletonLoader";
 
 // Project modal to show project details.
 const ProjectDetail = ({
@@ -13,6 +16,7 @@ const ProjectDetail = ({
   project: project;
   onClose: () => void;
 }) => {
+  const [loading, setLoading] = React.useState(true);
   return (
     <div
       onClick={(e) => {
@@ -80,6 +84,12 @@ const ProjectDetail = ({
                     : "h-[250px] md:h-[500px]"
                 } `}
               >
+                {loading &&
+                  (project.gif.platform === "mobile" ? (
+                    <MobileSkeletonLoader />
+                  ) : (
+                    <ComputerSkeletonLoader />
+                  ))}
                 <Image
                   src={project.gif.url}
                   alt={project.gif.platform}
@@ -87,6 +97,7 @@ const ProjectDetail = ({
                   priority
                   className="w-full h-full object-contain"
                   sizes="50vw"
+                  onLoad={() => setLoading(false)}
                 />
               </div>
             )}

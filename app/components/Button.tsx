@@ -1,5 +1,6 @@
 "use client";
 import { forwardRef } from "react";
+import { PulseLoader } from "react-spinners";
 const Button = forwardRef<
   HTMLButtonElement,
   {
@@ -7,8 +8,9 @@ const Button = forwardRef<
     className?: string;
     onClick?: () => void;
     disabled?: boolean;
+    loading?: boolean;
   }
->(({ text, className, onClick, disabled }, ref) => {
+>(({ text, className, onClick, disabled, loading }, ref) => {
   return (
     <button
       ref={ref}
@@ -19,7 +21,7 @@ const Button = forwardRef<
         disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      <p>{text}</p>
+      {loading ? <PulseLoader color="white" className="py-2" /> : <p>{text}</p>}
     </button>
   );
 });
