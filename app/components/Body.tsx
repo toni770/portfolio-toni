@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import NavLinks from "../nav-links";
 import Footer from "../Footer";
 import { LayoutProvider } from "../useHeader";
+import ReCaptchaProvider from "./ReCaptchaProvider";
 
 const Body = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -21,15 +22,17 @@ const Body = ({ children }: { children: React.ReactNode }) => {
       }`}
     >
       {!hideHeader && <NavLinks className="z-[2]" />}
-      <LayoutProvider
-        hideHeader={hideHeader}
-        setHideHeader={setHideHeader}
-        footerInFront={footerInFront}
-        setFooterInFront={setFooterInFront}
-      >
-        {" "}
-        <main className="flex-1 z-[1] md:z-[3]">{children}</main>
-      </LayoutProvider>
+      <ReCaptchaProvider>
+        <LayoutProvider
+          hideHeader={hideHeader}
+          setHideHeader={setHideHeader}
+          footerInFront={footerInFront}
+          setFooterInFront={setFooterInFront}
+        >
+          {" "}
+          <main className="flex-1 z-[1] md:z-[3]">{children}</main>
+        </LayoutProvider>
+      </ReCaptchaProvider>
       <Footer className={footerInFront ? "z-[2]" : "z-[0]"} />
     </body>
   );

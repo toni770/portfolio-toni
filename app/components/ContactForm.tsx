@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Input from "./Input";
 import {
   EnvelopeIcon,
@@ -9,10 +9,14 @@ import {
 } from "@heroicons/react/24/solid";
 import Button from "./Button";
 import { texts } from "../texts";
-import ReCAPTCHA from "react-google-recaptcha";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
+import emailjs from "@emailjs/browser";
+import Config from "../config";
 
 // Contact Form.
 const ContactForm = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+
   const [name, setName] = React.useState("");
   const [phone, setPhone] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -25,27 +29,27 @@ const ContactForm = () => {
 
     try {
       setSending(true);
-      if (!recaptchaRef.current) return;
+      if (!executeRecaptcha) return;
 
-      const token = await recaptchaRef.current.executeAsync();
-
-      const res = await fetch("/api/send-email", {
+      const token = await executeRecaptcha("contact_form");
+      const response = await fetch("api/verify-recaptcha", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          phone,
-          email,
-          message,
-          captchaToken: token,
-        }),
+        body: JSON.stringify({ token }),
       });
 
-      const data = await res.json();
+      const data = await response.json();
 
       if (!data.success) {
         throw new Error(data.message);
       }
+      //Send Mail
+      await emailjs.sendForm(
+        Config.emailjs.serviceId,
+        Config.emailjs.templateId,
+        form,
+        Config.emailjs.publicKey
+      );
 
       form.reset();
       setName("");
@@ -57,8 +61,9 @@ const ContactForm = () => {
         type: "success",
       });
     } catch (err) {
+      console.log(err);
       setStatus({
-        message: err.message,
+        message: "Error inesperado.",
         type: "error",
       });
     } finally {
@@ -73,8 +78,6 @@ const ContactForm = () => {
     message: "",
     type: "success",
   });
-
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   return (
     <form className="flex flex-col gap-7 md:gap-4 w-[80%]" onSubmit={SendMail}>
@@ -124,13 +127,6 @@ const ContactForm = () => {
       >
         {status.message}
       </p>
-
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-        size="invisible"
-        badge="bottomright"
-      />
 
       <Button
         text={texts.contact.form.submitLabel}
