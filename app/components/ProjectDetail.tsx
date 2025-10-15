@@ -4,7 +4,6 @@ import { XMarkIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import { InfiniteProjectTech } from "./InfiniteProjectTech";
 import Image from "next/image";
 import { texts } from "../texts";
-import Skeleton from "react-loading-skeleton";
 import { MobileSkeletonLoader } from "./MobileSkeletonLoader";
 import { ComputerSkeletonLoader } from "./ComputerSkeletonLoader";
 
