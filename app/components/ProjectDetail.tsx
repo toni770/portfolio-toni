@@ -17,8 +17,8 @@ const ProjectDetail = forwardRef<
 >(({ project, onClose }, ref) => {
   const [loading, setLoading] = React.useState(true);
 
-  function close() {
-    setLoading(true);
+  function close(){
+    setLoading(false);
     onClose();
   }
   return (
