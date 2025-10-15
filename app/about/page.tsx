@@ -33,6 +33,7 @@ const About = () => {
             priority
             className="object-cover"
             sizes="80vw"
+            placeholder="blur"
           />
         </div>
         <h1 className="text-4xl md:text-5xl w-[80%] md:w-[50%] text-center mb-10 md:mb-15">

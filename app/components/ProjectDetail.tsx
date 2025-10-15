@@ -17,6 +17,10 @@ const ProjectDetail = forwardRef<
 >(({ project, onClose }, ref) => {
   const [loading, setLoading] = React.useState(true);
 
+  function close() {
+    setLoading(true);
+    onClose();
+  }
   return (
     <div
       ref={ref}
@@ -27,7 +31,7 @@ const ProjectDetail = forwardRef<
     >
       <div className="relative  rounded-t-xl h-[5%] ">
         <div
-          onClick={onClose}
+          onClick={close}
           className="flex justify-end p-3 absolute top-0 right-0 cursor-pointer"
         >
           <XMarkIcon className="w-[3rem] h-[3rem]" />
