@@ -59,15 +59,14 @@ const ProjectList = forwardRef<
       const totalWidth = (containerRef.current.scrollWidth + GAP) / 2;
 
       // If scrollPos is less than leftMargin, it means we are at the end of the list. So, we jump to the start of the list.
-      if (scrollPos.current < leftMargin.current) {
+      if (scrollPos.current < leftMargin.current - 10) {
         scrollPos.current = totalWidth - step + leftMargin.current;
         containerRef.current.scrollLeft = totalWidth + leftMargin.current;
       }
       // If scrollPos is greater than totalWidth + leftMargin, it means we are at the start of the list. So, we jump to the end of the list.
-      else if (scrollPos.current > totalWidth + leftMargin.current) {
-        const firstPos = 0;
-        scrollPos.current = firstPos + step + leftMargin.current;
-        containerRef.current.scrollLeft = firstPos + leftMargin.current;
+      else if (scrollPos.current > totalWidth + leftMargin.current + 10) {
+        scrollPos.current = 0 + step + leftMargin.current;
+        containerRef.current.scrollLeft = 0 + leftMargin.current;
       }
 
       scrollAnimation(containerRef, scrollPos, isAnimating);

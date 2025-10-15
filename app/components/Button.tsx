@@ -17,7 +17,7 @@ const Button = forwardRef<
       onClick={onClick}
       role="button"
       disabled={disabled}
-      className={`cursor-pointer border border-black p-2 px-15 rounded-4xl flex items-center justify-center ${className} ${
+      className={`cursor-pointer border border-gray text-gray hover:border-white hover:text-white transition-all duration-200 ease-in-out p-2 px-15 rounded-4xl flex items-center justify-center  ${className} ${
         disabled ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >

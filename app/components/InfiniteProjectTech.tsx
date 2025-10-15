@@ -1,20 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
 import { AuxMono } from "../fonts";
-import { infiniteSliderAnimation } from "../animations/projectDetailAnimations";
+import { infiniteSliderAnimation } from "../animations/infiniteSliderAnimations";
 
 // Infinite Slider for project detail tech used.
 export const InfiniteProjectTech = ({
   technologies,
 }: {
-  technologies: string[];
+  technologies: string[] | undefined;
 }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const mesureRef = useRef<HTMLDivElement>(null);
 
-  const technologiesList = technologies.map((tech) => <p key={tech}>{tech}</p>);
+  const technologiesList = technologies?.map((tech) => (
+    <p key={tech}>{tech}</p>
+  ));
   const [isOverflowing, setIsOverflowing] = useState(false);
 
-  const technologiesListWithIcons = technologiesList.map((tech, index) => (
+  const technologiesListWithIcons = technologiesList?.map((tech, index) => (
     <React.Fragment key={index}>
       {tech}
       {(isOverflowing || index < technologiesList.length - 1) && (

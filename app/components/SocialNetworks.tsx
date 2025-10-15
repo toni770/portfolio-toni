@@ -26,7 +26,7 @@ const SocialNetworks = forwardRef<
           key={socialNetwork.name}
           href={socialNetwork.url}
           target="_blank"
-          className={`cursor-pointer hover:underline ${linkClassName} ${
+          className={`cursor-pointer hover:underline hover:text-white transition-colors duration-200 ease-in-out ${linkClassName} ${
             index < socialNetworks.length - 1 ? "border-r" : ""
           } md:border-r-0`}
         >

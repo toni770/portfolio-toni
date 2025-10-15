@@ -29,10 +29,10 @@ export default function NavLinks({ className }: { className?: string }) {
           key={link.name}
           href={link.href}
           className={
-            `pointer-events-auto hidden md:block  ` +
+            `pointer-events-auto hidden md:block ` +
             (pathname === link.href || pathname === link.href + "/"
               ? "text-white underline"
-              : "")
+              : "hover:text-white transition-colors duration-200 ease-in-out")
           }
         >
           {link.name}

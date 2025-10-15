@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, useRef } from "react";
 import { project } from "../projectData";
 import { XMarkIcon, LinkIcon, TrophyIcon } from "@heroicons/react/24/outline";
 import { InfiniteProjectTech } from "./InfiniteProjectTech";
@@ -8,20 +8,22 @@ import { MobileSkeletonLoader } from "./MobileSkeletonLoader";
 import { ComputerSkeletonLoader } from "./ComputerSkeletonLoader";
 
 // Project modal to show project details.
-const ProjectDetail = ({
-  project,
-  onClose,
-}: {
-  project: project;
-  onClose: () => void;
-}) => {
+const ProjectDetail = forwardRef<
+  HTMLDivElement,
+  {
+    project: project | null;
+    onClose: () => void;
+  }
+>(({ project, onClose }, ref) => {
   const [loading, setLoading] = React.useState(true);
+
   return (
     <div
+      ref={ref}
       onClick={(e) => {
         e.stopPropagation();
       }}
-      className=" text-black rounded-xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:w-[70%] w-[90%] h-[95%] z-30 flex flex-col bg-white"
+      className=" scale-[0] opacity-0 text-black rounded-xl fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:w-[70%] w-[90%] h-[95%] z-30 flex flex-col bg-white"
     >
       <div className="relative  rounded-t-xl h-[5%] ">
         <div
@@ -35,12 +37,12 @@ const ProjectDetail = ({
         <div className="p-7 pt-2 border-b border-darkGray ">
           <div className="flex flex-wrap flex-col md:flex-row justify-between">
             <div>
-              <h1 className="text-6xl md:text-7xl  pb-2">{project.name}</h1>
+              <h1 className="text-6xl md:text-7xl  pb-2">{project?.name}</h1>
 
-              <p>{project.description}</p>
+              <p>{project?.description}</p>
             </div>
             <div className="flex justify-end flex-col">
-              {project.links?.map((link, index) => (
+              {project?.links?.map((link, index) => (
                 <div key={index} className="flex gap-2 items-center ">
                   {link.type === "reward" ? (
                     <TrophyIcon className="w-5 h-5" />
@@ -57,25 +59,29 @@ const ProjectDetail = ({
         </div>
         <div
           className={`flex h-full flex-col ${
-            project.gif && project.gif.platform === "mobile" && "md:flex-row"
+            project?.gif && project.gif.platform === "mobile" && "md:flex-row"
           }`}
         >
-          <div className="flex-1 md:border-r border-darkGray w-full p-10 flex flex-col justify-around">
+          <div
+            className={`flex-1 ${
+              project?.gif && project.gif.platform === "mobile" && "md:border-r"
+            } border-darkGray w-full p-10 flex flex-col justify-around`}
+          >
             <div className="pb-5">
               <p className="underline pb-5">
                 {texts.home.projectDetail.problem}
               </p>
-              <p>{project.problem}</p>
+              <p>{project?.problem}</p>
             </div>
             <div>
               <p className="underline pb-5">
                 {texts.home.projectDetail.solution}
               </p>
-              <p>{project.solution}</p>
+              <p>{project?.solution}</p>
             </div>
           </div>
           <div className="block flex-1 p-10 px-2 h-full">
-            {project.gif && (
+            {project?.gif && (
               <div
                 className={`relative w-full ${
                   project.gif.platform === "mobile"
@@ -103,9 +109,10 @@ const ProjectDetail = ({
           </div>
         </div>
       </div>
-      <InfiniteProjectTech technologies={project.technologies} />
+      <InfiniteProjectTech technologies={project?.technologies} />
     </div>
   );
-};
+});
+ProjectDetail.displayName = "ProjectDetail";
 
 export default ProjectDetail;

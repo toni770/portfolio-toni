@@ -7,6 +7,7 @@ const Input = ({
   className,
   name,
   value = "",
+  placeholder = "",
   onChange = () => {},
 }: {
   label: string;
@@ -15,6 +16,7 @@ const Input = ({
   className?: string;
   name?: string;
   value?: string;
+  placeholder?: string;
   onChange?: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -23,7 +25,7 @@ const Input = ({
     <div className={className}>
       <div className="flex gap-2 items-center pb-1">
         {icon}
-        <label className=" text-darkGray" htmlFor="name">
+        <label className=" text-white" htmlFor="name">
           {label}
         </label>
       </div>
@@ -35,6 +37,7 @@ const Input = ({
           maxLength={300}
           value={value}
           onChange={onChange}
+          placeholder={placeholder}
         ></textarea>
       ) : (
         <input
@@ -45,6 +48,7 @@ const Input = ({
           value={value}
           onChange={onChange}
           required
+          placeholder={placeholder}
         />
       )}
     </div>

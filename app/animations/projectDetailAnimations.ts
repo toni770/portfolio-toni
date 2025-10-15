@@ -1,28 +1,40 @@
+import { RefObject } from "react";
 import gsap from "gsap";
 
-let _sliderRef: React.RefObject<HTMLDivElement | null>;
-let leftScroll: number = 0;
-
-// Infinite slider in projectDetail animation.
-export function infiniteSliderAnimation(
-  sliderRef: React.RefObject<HTMLDivElement | null>
+export function popUpAnimation(
+  containerRef: RefObject<HTMLDivElement | null>,
+  bgRef: RefObject<HTMLDivElement | null>,
+  show: boolean
 ) {
-  _sliderRef = sliderRef;
-  requestAnimationFrame(animation);
-}
-
-const animation = () => {
-  if (_sliderRef.current) {
-    const totalWidth = _sliderRef.current.scrollWidth / 2;
-
-    if (leftScroll > totalWidth) {
-      leftScroll = 0;
-      _sliderRef.current.scrollLeft = 0;
-    } else {
-      leftScroll += 0.5;
-    }
-
-    gsap.set(_sliderRef.current, { scrollLeft: leftScroll });
-    requestAnimationFrame(animation);
+  if (show) {
+    gsap.to(containerRef.current, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+    gsap.to(bgRef.current, {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power3.out",
+      onComplete: () => {
+        bgRef.current?.classList.remove("pointer-events-none");
+      },
+    });
+  } else {
+    gsap.to(containerRef.current, {
+      scale: 0,
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+    gsap.to(bgRef.current, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+      onComplete: () => {
+        bgRef.current?.classList.add("pointer-events-none");
+      },
+    });
   }
-};
+}

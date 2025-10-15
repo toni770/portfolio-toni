@@ -84,41 +84,45 @@ const ContactForm = () => {
       <div className="flex flex-col md:flex-row gap-7 md:gap-2">
         <Input
           className="flex-1"
-          label={texts.contact.form.nameLabel}
+          label={texts.contact.form.name.label}
           type="text"
-          icon={<UserIcon className="w-5 h-5 text-darkGray" />}
+          icon={<UserIcon className="w-5 h-5 text-white" />}
           onChange={(e) => setName(e.target.value)}
           value={name}
           name="name"
+          placeholder={texts.contact.form.name.placeholder}
         />
         <Input
           className="flex-1"
-          label={texts.contact.form.phoneLabel}
+          label={texts.contact.form.phone.label}
           type="phone"
-          icon={<PhoneIcon className="w-5 h-5 text-darkGray" />}
+          icon={<PhoneIcon className="w-5 h-5 text-white" />}
           onChange={(e) => setPhone(e.target.value)}
           value={phone}
           name="phone"
+          placeholder={texts.contact.form.phone.placeholder}
         />
       </div>
 
       <Input
         className="flex-1"
-        label={texts.contact.form.emailLabel}
+        label={texts.contact.form.email.label}
         type="email"
-        icon={<EnvelopeIcon className="w-5 h-5 text-darkGray" />}
+        icon={<EnvelopeIcon className="w-5 h-5 text-white" />}
         onChange={(e) => setEmail(e.target.value)}
         value={email}
         name="email"
+        placeholder={texts.contact.form.email.placeholder}
       />
       <Input
         className="flex-1"
-        label={texts.contact.form.messageLabel}
+        label={texts.contact.form.message.label}
         type="textArea"
-        icon={<ChatBubbleLeftIcon className="w-5 h-5 text-darkGray" />}
+        icon={<ChatBubbleLeftIcon className="w-5 h-5 text-white" />}
         onChange={(e) => setMessage(e.target.value)}
         value={message}
         name="message"
+        placeholder={texts.contact.form.message.placeholder}
       />
       <p
         className={
@@ -132,7 +136,7 @@ const ContactForm = () => {
         text={texts.contact.form.submitLabel}
         disabled={sending}
         loading={sending}
-        className="w-[30%] p-3 px-30 border-white mb-10 md:mb-0"
+        className="w-[30%] p-3 px-30 mb-10 md:mb-0"
       />
     </form>
   );

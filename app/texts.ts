@@ -20,10 +20,22 @@ export const texts = {
     subtitle:
       "¿Tienes una pregunta, una idea o un proyecto con el que necesitas ayuda?",
     form: {
-      nameLabel: "Nombre",
-      phoneLabel: "Telefono",
-      emailLabel: "Correo electronico",
-      messageLabel: "Mensaje",
+      name: {
+        label: "Nombre",
+        placeholder: "¿Cómo te llamas?",
+      },
+      phone: {
+        label: "Telefono",
+        placeholder: "¿Cuál es tu numero?",
+      },
+      email: {
+        label: "Correo electronico",
+        placeholder: "¿Cuál es tu correo?",
+      },
+      message: {
+        label: "Mensaje",
+        placeholder: "Cuéntame tu idea...",
+      },
       submitLabel: "Enviar",
     },
   },

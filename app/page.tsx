@@ -12,6 +12,7 @@ import {
   showProjectsAnimation,
 } from "./animations/homeAnimations";
 import { useLayout } from "./useHeader";
+import { popUpAnimation } from "./animations/projectDetailAnimations";
 
 // Home Page.
 export default function Home() {
@@ -28,16 +29,21 @@ export default function Home() {
   const [showProjects, setShowProjects] = useState(false);
   const { setHideHeader, setFooterInFront } = useLayout();
 
+  const popUpContainerRef = useRef<HTMLDivElement>(null);
+  const popUpBgRef = useRef<HTMLDivElement>(null);
+
   function handleClose() {
     setSelectedProject(null);
     setHideHeader(false);
     setFooterInFront(true);
+    popUpAnimation(popUpContainerRef, popUpBgRef, false);
   }
 
   function handleOpen(project: project) {
     setSelectedProject(project);
     setHideHeader(true);
     setFooterInFront(false);
+    popUpAnimation(popUpContainerRef, popUpBgRef, true);
   }
 
   useEffect(() => {
@@ -102,7 +108,7 @@ export default function Home() {
         <div className="px-7 md:w-[50%] lg:w-[40%] flex flex-col items-center md:items-start">
           <Button
             text={showProjects ? texts.home.buttonBack : texts.home.button}
-            className="border-white w-[250px]"
+            className="w-[250px]"
             onClick={() => (showProjects ? GoBackHome() : GoToProjects())}
             ref={buttonRef}
           />
@@ -113,14 +119,19 @@ export default function Home() {
             {texts.home.subtitle}
           </p>
         </div>
-        {selectedProject && (
-          <div
-            className=" fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-[20]"
-            onClick={handleClose}
-          >
-            <ProjectDetail project={selectedProject} onClose={handleClose} />
-          </div>
-        )}
+        {/* {selectedProject && ( */}
+        <div
+          ref={popUpBgRef}
+          className=" opacity-0 fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-[20] pointer-events-none"
+          onClick={handleClose}
+        >
+          <ProjectDetail
+            ref={popUpContainerRef}
+            project={selectedProject}
+            onClose={handleClose}
+          />
+        </div>
+        {/* )} */}
       </div>
 
       <ProjectList

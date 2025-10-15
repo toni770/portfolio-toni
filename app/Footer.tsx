@@ -26,7 +26,11 @@ export default function Footer({ className }: { className?: string }) {
       />
       <p className="hidden md:block">
         Diseño by{" "}
-        <a href="https://abrilsecchi.com" target="_blank" className="underline">
+        <a
+          href="https://abrilsecchi.com"
+          target="_blank"
+          className="underline hover:text-white transition-colors duration-200 ease-in-out"
+        >
           Abril Secchi
         </a>
       </p>
