@@ -11,6 +11,12 @@ const ReCaptchaProvider: React.FC<ReCaptchaProviderProps> = ({ children }) => {
   return (
     <GoogleReCaptchaProvider
       reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+      container={{
+        element: "body",
+        parameters: {
+          theme: "dark",
+        },
+      }}
     >
       {children}
     </GoogleReCaptchaProvider>
