@@ -15,6 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="apple-mobile-web-app-title" content="ToniMartinDev" />
+      </head>
+
       <GoogleAnalytics gaId="G-TZM93WRJXK" />
       <Body>{children}</Body>
     </html>
