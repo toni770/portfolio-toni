@@ -34,7 +34,7 @@ const projectData: project[] = [
     name: "No.Flights",
     description: "Plataforma de reserva de vuelos privados de último minuto.",
     problem:
-      "Se requería una solución digital que permitiera reservar vuelos de ultimo minuto de forma rápida e intuitiva, reduciendo la fricción del proceso tradicional.",
+      "Se necesitaba una plataforma que permitiera reservar vuelos de último minuto de forma rápida e intuitiva, quitando la complejidad del proceso tradicional.",
     solution:
       "Aplicación móvil sencilla e intuitiva que se conecta en tiempo real con aerolíneas y operadores de jets privados, permitiendo completar reservas en pocos pasos.",
     technologies: ["React Native", "Node.js", "Express.js", "Pasarela de pago"],
@@ -122,9 +122,9 @@ const projectData: project[] = [
     name: "Voleijam",
     description: "Plataforma web para la gestión de torneos de vóley playa.",
     problem:
-      "La web existente para gestionar torneos de vóley playa era limitada y no cubría las necesidades específicas del cliente.",
+      "La web existente para gestionar torneos de vóley playa era limitada y no cubría las necesidades del cliente.",
     solution:
-      "Rediseño y mejora del sistema de gestión, adaptándolo a los requisitos concretos del cliente para ofrecer una solución más completa, flexible y eficiente.",
+      "Rediseño y mejora del sistema de gestión, adaptándolo a los requisitos del cliente para ofrecer una web más completa, flexible y eficiente.",
     technologies: ["React", "Firebase", "Firestore"],
     image: "/projects/images/MockUpVoleiJam.png",
     links: [
@@ -142,9 +142,9 @@ const projectData: project[] = [
     name: "Boatcare",
     description: "Plataforma de mantenimiento y reparación de embarcaciones.",
     problem:
-      "Se requería una aplicación que centralizara y facilitara la gestión de servicios de mantenimiento y reparación para propietarios de embarcaciones.",
+      "Se necesitaba una aplicación que centralizara y facilitara la gestión de servicios de mantenimiento y reparación para propietarios de embarcaciones.",
     solution:
-      "Plataforma digital que conecta a propietarios de embarcaciones con proveedores especializados, permitiendo solicitar, gestionar y seguir servicios de mantenimiento y reparación desde web o móvil.",
+      "Aplicación que conecta a propietarios de embarcaciones con proveedores especializados, permitiendo solicitar, gestionar y seguir servicios de mantenimiento y reparación desde web o móvil.",
     technologies: ["WordPress", "Pasarela de pago", "React Native"],
     image: "/projects/images/MockUpBoatCare.png",
     tags: ["App"],

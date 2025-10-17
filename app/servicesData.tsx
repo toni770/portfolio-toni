@@ -20,21 +20,21 @@ export const Services = [
     title: "Desarrollo",
     subtitle: "Web",
     description:
-      "Creo sitios y plataformas web que hacen que tu negocio funcione mejor y tus usuarios tengan una experiencia clara y eficiente.",
+      "Creo sitios y plataformas web que hacen que tu negocio funcione mejor y tus usuarios tengan una buena experiencia.",
     icon: <GlobeAltIcon className={iconClasses} />,
   },
   {
     title: "Integraciones",
     subtitle: "a medida",
     description:
-      "Conecto tus sistemas y herramientas para que trabajen juntos sin fricciones, ahorrándote tiempo y dolores de cabeza.",
+      "Conecto tus sistemas y herramientas para que trabajen juntos, ahorrándote tiempo y dolores de cabeza.",
     icon: <PuzzlePieceIcon className={iconClasses} />,
   },
   {
     title: "Inteligencia",
     subtitle: "Artificial",
     description:
-      "Implemento soluciones de IA prácticas que automatizan tareas y mejoran la toma de decisiones, de manera directa y útil.",
+      "Implemento IA para automatizar tareas, ahorrar tiempo y mejorar la toma de decisiones.",
     icon: <Cog6ToothIcon className={iconClasses} />,
   },
 ];

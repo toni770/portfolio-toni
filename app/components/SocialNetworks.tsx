@@ -5,7 +5,7 @@ import { AuxMono } from "../fonts";
 const socialNetworks = [
   { name: "Github", url: Config.url.github },
   { name: "Linkedin", url: Config.url.linkedin },
-  { name: "Gmail", url: Config.url.gmail },
+  { name: "Mail", url: Config.url.gmail },
 ];
 
 // List of Social Networks.

@@ -108,7 +108,7 @@ export default function Home() {
         <div className="px-7 md:w-[50%] lg:w-[40%] flex flex-col items-center md:items-start">
           <Button
             text={showProjects ? texts.home.buttonBack : texts.home.button}
-            className="w-[250px]"
+            className="w-[250px] text-gray border-gray"
             onClick={() => (showProjects ? GoBackHome() : GoToProjects())}
             ref={buttonRef}
           />

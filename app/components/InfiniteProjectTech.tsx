@@ -25,15 +25,18 @@ export const InfiniteProjectTech = ({
     </React.Fragment>
   ));
 
-  useEffect(() => {
-    infiniteSliderAnimation(sliderRef);
+  const checkOverflow = () => {
     const el = mesureRef.current;
     if (!el) return;
 
-    const checkOverflow = () => {
-      const hasOverflow = el.scrollWidth > el.clientWidth;
-      setIsOverflowing(hasOverflow);
-    };
+    const hasOverflow = el.scrollWidth > el.clientWidth;
+    console.log(el.scrollWidth, el.clientWidth);
+    console.log(hasOverflow);
+    setIsOverflowing(hasOverflow);
+  };
+
+  useEffect(() => {
+    infiniteSliderAnimation(sliderRef);
 
     checkOverflow();
 
@@ -41,6 +44,10 @@ export const InfiniteProjectTech = ({
     window.addEventListener("resize", checkOverflow);
     return () => window.removeEventListener("resize", checkOverflow);
   }, []);
+
+  useEffect(() => {
+    checkOverflow();
+  }, [technologies]);
 
   return (
     <>

@@ -136,7 +136,7 @@ const ContactForm = () => {
         text={texts.contact.form.submitLabel}
         disabled={sending}
         loading={sending}
-        className="w-[30%] p-3 px-30 mb-10 md:mb-0"
+        className="w-[30%] p-3 px-30 mb-10 md:mb-0 text-gray border-gray"
       />
     </form>
   );

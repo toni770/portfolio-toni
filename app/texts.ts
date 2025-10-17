@@ -11,7 +11,7 @@ export const texts = {
   },
   about: {
     title:
-      "Desarrollador *Fullstack* especializado en creación de *Aplicaciones* e *integraciones*. Elimino la *complejidad* y resuelvo *problemas*.",
+      "Desarrollador *Fullstack* con 7 años de experiencia especializado en creación de *Aplicaciones* e *integraciones*. Elimino la *complejidad* y resuelvo *problemas*.",
     subtitle: "¿Que puedo hacer por ti?",
     infiniteText: "Soluciones personalizadas",
   },

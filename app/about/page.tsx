@@ -27,16 +27,15 @@ const About = () => {
         <AnimatedBackground />
         <div className="absolute top-0 mt-20 md:mt-30 z-[-1] rounded-xl w-[70%] md:w-[60%] lg:w-100 h-[60%] md:h-[70%] overflow-hidden ">
           <Image
-            src="/fotoAbout.jpg"
+            src="/fotoAbout.jpeg"
             alt="Toni"
             fill
             priority
             className="object-cover"
             sizes="80vw"
-            placeholder="blur"
           />
         </div>
-        <h1 className="text-4xl md:text-5xl w-[80%] md:w-[50%] text-center mb-10 md:mb-15">
+        <h1 className="text-4xl md:text-5xl w-[100%] md:w-[50%] text-center mb-10 md:mb-15">
           {highlightText(texts.about.title)}
         </h1>
         <ArrowDownIcon className="w-9 h-9 mb-5" />

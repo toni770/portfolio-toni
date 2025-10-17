@@ -33,7 +33,7 @@ const Contact = () => {
           <p className="w-[100%] md:w-[50%]">{texts.contact.subtitle}</p>
           <Button
             text="Escríbeme"
-            className="w-[50%] border-black mt-7 md:hidden"
+            className="w-[50%] border-black mt-7 md:hidden text-black"
             onClick={handleScroll}
           />
         </div>
