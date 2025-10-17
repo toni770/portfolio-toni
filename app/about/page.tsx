@@ -25,7 +25,7 @@ const About = () => {
     <div className="flex flex-col justify-between w-full ">
       <div className="flex flex-col justify-end items-center pt-7 flex-1 min-h-[calc(100vh)] md:min-h-[calc(100vh-4rem)] px-7 py-7">
         <AnimatedBackground />
-        <div className="absolute top-0 mt-20 md:mt-30 z-[-1] rounded-xl w-[70%] md:w-[60%] lg:w-100 h-[60%] md:h-[70%] overflow-hidden ">
+        <div className="absolute top-0 mt-20 md:mt-30 z-[-1] rounded-xl w-80 lg:w-100 h-[60%] md:h-[70%] overflow-hidden ">
           <Image
             src="/fotoAbout.jpeg"
             alt="Toni"
@@ -35,7 +35,7 @@ const About = () => {
             sizes="80vw"
           />
         </div>
-        <h1 className="text-4xl md:text-5xl w-[100%] md:w-[50%] text-center mb-10 md:mb-15">
+        <h1 className="text-4xl lg:text-5xl w-[100%] lg:w-[60%] text-center mb-10 md:mb-15">
           {highlightText(texts.about.title)}
         </h1>
         <ArrowDownIcon className="w-9 h-9 mb-5" />

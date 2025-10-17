@@ -27,8 +27,12 @@ const ProjectCard = ({
             ? `${width + 100}px`
             : `${width}px`,
         transition: "width 0.2s ease-in-out",
+        height:
+          hover && window.matchMedia("(min-width: 640px)").matches
+            ? "100%"
+            : "95%",
       }}
-      className={`relative rounded-xl  h-full transition-all duration-300 ease-in-out  hover:shadow-lg inline-block align-top `}
+      className={`relative rounded-xl transition-all duration-300 ease-in-out  hover:shadow-lg inline-block align-top `}
       onClick={onClick}
     >
       <Image

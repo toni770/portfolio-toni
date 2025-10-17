@@ -119,7 +119,6 @@ export default function Home() {
             {texts.home.subtitle}
           </p>
         </div>
-        {/* {selectedProject && ( */}
         <div
           ref={popUpBgRef}
           className=" opacity-0 fixed top-0 left-0 w-full h-full bg-[rgba(0,0,0,0.7)] z-[20] pointer-events-none"
@@ -131,7 +130,6 @@ export default function Home() {
             onClose={handleClose}
           />
         </div>
-        {/* )} */}
       </div>
 
       <ProjectList

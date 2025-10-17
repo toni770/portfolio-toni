@@ -111,7 +111,7 @@ const ProjectList = forwardRef<
 
       let nElements = 3;
 
-      if (window.matchMedia("(min-width: 1024px)").matches) nElements = 3;
+      if (window.matchMedia("(min-width: 1024px)").matches) nElements = 4;
       else if (window.matchMedia("(min-width: 768px)").matches) nElements = 2;
       else if (window.matchMedia("(min-width: 640px)").matches) nElements = 1;
       else nElements = 1;
@@ -185,7 +185,7 @@ const ProjectList = forwardRef<
             ref={containerRef}
             className="scrollBehavior-auto flex-1 overflow-x-hidden overflow-y-hidden whitespace-nowrap scrollbar-hide w-full"
           >
-            <div className="inline-flex gap-5 h-full">
+            <div className="inline-flex gap-5 h-full flex items-end">
               {filteredProjects.map((project) => (
                 <ProjectCard
                   key={project.name}
