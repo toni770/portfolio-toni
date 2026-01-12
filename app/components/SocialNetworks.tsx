@@ -3,6 +3,7 @@ import Config from "../config";
 import { AuxMono } from "../fonts";
 
 const socialNetworks = [
+  { name: "CV", url: "./portfolio.pdf" },
   { name: "Github", url: Config.url.github },
   { name: "Linkedin", url: Config.url.linkedin },
   { name: "Mail", url: Config.url.gmail },

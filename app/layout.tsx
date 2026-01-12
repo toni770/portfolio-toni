@@ -4,8 +4,26 @@ import Body from "./components/Body";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
-  title: "Toni Martin",
-  description: "Toni Portfolio",
+  title: {
+    default: "Toni Martin",
+    template: "%s | Toni Martin",
+  },
+  description: "Toni Martin Programador Freelance",
+  keywords: [
+    "Toni Martin",
+    "Programador",
+    "Freelance",
+    "Portfolio",
+    "Freelance",
+  ],
+  authors: [{ name: "Toni Martin" }],
+  openGraph: {
+    title: "Toni Martin",
+    description: "Toni Martin Programador Freelance",
+    type: "website",
+    locale: "es-ES",
+    siteName: "Toni Martin",
+  },
 };
 
 export default function RootLayout({
