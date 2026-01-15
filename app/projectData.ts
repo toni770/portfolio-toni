@@ -59,7 +59,7 @@ const projectData: project[] = [
       "Las comunidades musulmanas carecían de una plataforma centralizada para encontrar mezquitas cercanas y mantenerse informadas sobre noticias y eventos relevantes.",
     solution:
       "Aplicación móvil que permite localizar mezquitas en España mediante geolocalización y recibir notificaciones con las últimas novedades.",
-    technologies: ["React Native", "Notificaciones Push", "Wordpress"],
+    technologies: ["React Native", "Notificaciones Push", "Wordpress", "Node.js"],
     image: "/projects/images/MockUpKheirApp.png",
     links: [
       {
